@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="C&A Campo">
+<meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<title>C&A Campo · Provokers</title>
+<style>
+:root{--ink:#111;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e8e6e1;--bg:#fff;--soft:#f5f3ef;--beige:#e9e1d3;--beige2:#b8a587;--r:18px;
+--f:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 20px calc(env(safe-area-inset-bottom) + 96px)}
+/* login */
+#lock{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;z-index:50}
+#lock img.cea{width:92px;margin-bottom:36px}
+#lock h1{font-weight:300;font-size:34px;line-height:1.05;letter-spacing:-.02em;margin:0 0 28px;text-align:center}
+#lock h1 b{font-weight:700}
+#lock form{width:100%;max-width:320px}
+#lock input{width:100%;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--soft);padding:0 16px;font-size:17px;outline:none}
+#lock input:focus{border-color:var(--ink)}
+#lock .go{width:100%;height:52px;border-radius:14px;background:var(--ink);color:#fff;font-weight:600;font-size:17px;margin-top:12px}
+#lock .err{color:#b3261e;font-size:14px;height:20px;margin-top:10px;text-align:center}
+#lock .pv{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 28px);width:110px;opacity:.85}
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;padding:6px 0 18px}
+.top img.cea{height:34px}
+.status{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:#34c759}
+.off .dot{background:var(--ink3)}
+h1.big{font-weight:300;font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:8px 0 6px}
+h1.big b{font-weight:700}
+.sub{color:var(--ink2);font-size:15px;margin:0 0 24px}
+/* segment */
+.seg{display:flex;background:var(--soft);border-radius:12px;padding:3px;margin-bottom:20px}
+.seg button{flex:1;height:40px;border-radius:10px;font-size:14px;font-weight:500;color:var(--ink2);line-height:1.1}
+.seg button small{display:block;font-size:11px;font-weight:400}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+/* day */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}
+.team div{background:var(--soft);border-radius:14px;padding:12px}
+.team span{display:block;font-size:12px;color:var(--ink2);margin-bottom:3px}
+.team strong{font-size:15px;font-weight:600}
+.tl{position:relative}
+.v{display:flex;gap:14px;padding-bottom:12px}
+.v .rail{display:flex;flex-direction:column;align-items:center;width:44px;flex:none}
+.v .h{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;padding-top:18px}
+.v .h.after{font-size:11px;font-weight:500;color:var(--ink2);text-align:center;line-height:1.2}
+.v .ln{flex:1;width:1px;background:var(--line);margin-top:8px}
+.card{flex:1;border:1px solid var(--line);border-radius:var(--r);padding:16px;background:#fff}
+.card.loja{background:var(--soft);border-color:transparent}
+.card.now{border-color:var(--ink);box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.kind{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);margin-bottom:6px}
+.kind svg{width:14px;height:14px}
+.tag{margin-left:auto;background:var(--beige);color:var(--ink);font-size:11px;font-weight:600;border-radius:99px;padding:3px 9px}
+.card h3{margin:0 0 4px;font-size:18px;font-weight:600;letter-spacing:-.01em}
+.card p{margin:0;color:var(--ink2);font-size:14px;line-height:1.4}
+.acts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:99px;font-size:14px;font-weight:500;background:var(--ink);color:#fff}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn svg{width:15px;height:15px}
+/* manual */
+.sec{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:34px 0 14px}
+.sec:first-of-type{margin-top:8px}
+.item{border-bottom:1px solid var(--line)}
+.item summary{list-style:none;display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer}
+.item summary::-webkit-details-marker{display:none}
+.ic{width:40px;height:40px;border-radius:12px;background:var(--beige);display:grid;place-items:center;flex:none}
+.ic svg{width:20px;height:20px}
+.item summary b{font-size:16px;font-weight:600;flex:1}
+.chev{width:16px;height:16px;transition:transform .25s;color:var(--ink3)}
+.item[open] .chev{transform:rotate(90deg)}
+.item .body{padding:0 0 18px 54px;color:#3a3a3c;font-size:15px;line-height:1.5}
+.item .body p{margin:0 0 10px}
+.dd{display:grid;gap:10px}
+.dd .col{border-radius:var(--r);padding:18px}
+.dd .do{background:var(--soft)}
+.dd .dont{border:1px solid var(--line)}
+.dd h4{margin:0 0 10px;font-size:15px;font-weight:700}
+.dd ul{list-style:none;margin:0;padding:0}
+.dd li{display:flex;gap:10px;font-size:15px;line-height:1.4;padding:6px 0}
+.dd li svg{width:18px;height:18px;flex:none;margin-top:1px}
+/* contatos */
+.ct{border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start}
+.av{width:48px;height:48px;border-radius:50%;background:var(--beige);display:grid;place-items:center;font-weight:600;font-size:16px;flex:none}
+.ct h3{margin:2px 0 2px;font-size:17px;font-weight:600}
+.ct p{margin:0 0 4px;font-size:13px;color:var(--ink2);line-height:1.35}
+.ct .ln2{font-size:14px;margin-top:2px;word-break:break-all}
+.foot{display:flex;align-items:center;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3)}
+.foot img{height:18px;opacity:.8}
+.notice{background:var(--beige);border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.4;margin-bottom:18px}
+/* tabbar */
+nav{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:10}
+nav .in{max-width:560px;margin:0 auto;display:flex}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0 7px;font-size:11px;color:var(--ink3)}
+nav button svg{width:24px;height:24px}
+nav button.on{color:var(--ink)}
+.view{display:none;animation:fade .25s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 12px);transform:translate(-50%,-80px);background:var(--ink);color:#fff;font-size:13px;padding:10px 16px;border-radius:99px;transition:transform .35s;z-index:60}
+.toast.show{transform:translate(-50%,0)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="lock">
+  <img class="cea" src="cea.png" alt="C&A">
+  <h1>campo que<br><b>inspira.</b></h1>
+  <form id="lf" autocomplete="off">
+    <label for="pw" style="position:absolute;left:-9999px">Senha</label>
+    <input id="pw" type="password" placeholder="Senha de acesso" inputmode="text" autocapitalize="off">
+    <button class="go" type="submit">Entrar</button>
+    <div class="err" id="err" aria-live="polite"></div>
+  </form>
+  <img class="pv" src="provokers.png" alt="Provokers">
+</div>
+
+<div class="wrap" id="app" hidden>
+  <div class="top">
+    <img class="cea" src="cea.png" alt="C&A">
+    <div class="status" id="st"><span class="dot"></span><span id="stt">Online</span></div>
+  </div>
+
+  <section class="view on" id="v-agenda">
+    <h1 class="big">roteiro de<br><b>campo.</b></h1>
+    <p class="sub" id="psub"></p>
+    <div id="notices"></div>
+    <div class="seg" id="days" role="tablist"></div>
+    <div class="team" id="team"></div>
+    <div class="tl" id="tl"></div>
+  </section>
+
+  <section class="view" id="v-manual">
+    <h1 class="big">manual de<br><b>campo.</b></h1>
+    <p class="sub">Para uma visita respeitosa, confortável e enriquecedora para todos.</p>
+    <div id="manual"></div>
+    <h2 class="sec">Pode e não pode</h2>
+    <div class="dd" id="dd"></div>
+  </section>
+
+  <section class="view" id="v-contatos">
+    <h1 class="big">contatos<br><b>provokers.</b></h1>
+    <p class="sub">Qualquer dúvida ou necessidade durante as visitas, fale com quem acompanha.</p>
+    <div id="cts"></div>
+  </section>
+
+  <div class="foot"><span id="ver"></span><img src="provokers.png" alt="Provokers"></div>
+</div>
+
+<nav id="nav" hidden><div class="in">
+  <button type="button" data-v="agenda" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Agenda</button>
+  <button type="button" data-v="manual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4.5h10a4 4 0 0 1 4 4v11H9a4 4 0 0 1-4-4z"/><path d="M9 9h6M9 13h6"/></svg>Manual</button>
+  <button type="button" data-v="contatos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Contatos</button>
+</div></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+const HASH='e350ef425bd36ffa4a5e58d7c13ac9ee509436eef3a5a4a493dc3e089de78820';
+const FALLBACK={"versao": "2026-10-26 15:50", "projeto": "P12264 · Estudo Armários do Brasil", "cliente": "C&A", "pracas": [{"id": "sp", "nome": "São Paulo", "periodo": "28 a 30 de outubro de 2026", "resumo": "6 etnografias · 6 visitas a lojas", "dias": [{"data": "2026-10-28", "titulo": "Dia 1", "moderacao": "Karin", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Paula Regina B.", "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Tatuapé", "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"}, {"hora": "15:00", "tipo": "casa", "nome": "Paula S.", "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Itaquera", "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"}]}, {"data": "2026-10-29", "titulo": "Dia 2", "moderacao": "Karin", "acompanha": "Gustavo", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Rovesca J.", "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Morumbi", "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"}, {"hora": "15:00", "tipo": "casa", "nome": "Jozeane I.", "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Interlagos", "endereco": "Av. Interlagos, 2255 · Interlagos"}]}, {"data": "2026-10-30", "titulo": "Dia 3", "moderacao": "Luna", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Vivian C.", "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Av. Paulista / Centro (rua)", "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"}, {"hora": "15:00", "tipo": "casa", "nome": "Vitória S.", "endereco": "Av. Handu, 1361 · Planalto Paulista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Ibirapuera", "endereco": "Av. Ibirapuera, 3103 · Indianópolis"}]}]}], "manual": [{"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": ["Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes.", "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos.", "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": ["Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis.", "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": ["Durante a entrevista, anote perguntas e impressões e deixe para conversar ao final da visita.", "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto.", "Assim preservamos o fluxo da conversa e evitamos interferir na condução da moderadora."]}], "dos": ["Cumprimentar e agradecer por estar nos recebendo", "Ser simpático e receptivo caso ela inicie uma conversa", "Demonstrar interesse de maneira natural, sem julgamentos", "Respeitar os espaços indicados pela entrevistada e pela equipe"], "donts": ["Completar respostas ou dar exemplos que possam influenciar o que ela dirá", "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa", "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"], "contatos": [{"nome": "Gabriela Sartoretto", "papel": "Acompanhamento do cliente · ponto de contato principal em campo", "tel": "+5511950600210", "telFmt": "(11) 95060-0210", "email": "gabriela.sartoretto@provokers.com.br"}, {"nome": "Gustavo Pelegrini", "papel": "Acompanhamento do cliente", "tel": "+5511982623956", "telFmt": "(11) 98262-3956", "email": "gustavo.pelegrini@provokers.com.br"}], "avisos": []};
+const WD=['dom','seg','ter','qua','qui','sex','sáb'];
+const fmtDay=s=>{const [y,m,d]=String(s).split('-').map(Number);if(!y)return '';const w=new Date(y,m-1,d).getDay();return WD[w]+', '+String(d).padStart(2,'0')+'/'+String(m).padStart(2,'0')};
+const todayStr=()=>{const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')};
+const store={get:k=>{try{return window.localStorage.getItem(k)}catch(_){return null}},set:(k,v)=>{try{window.localStorage.setItem(k,v)}catch(_){}}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const I={
+ home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11l8-6.5 8 6.5V20H4z"/><path d="M10 20v-5h4v5"/></svg>',
+ bag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>',
+ shirt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.5 4L4 6.5l1.8 4L8 9.6V20h8V9.6l2.2.9 1.8-4L15.5 4a3.5 3.5 0 0 1-7 0z"/></svg>',
+ question:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.4"/><circle cx="12" cy="16.8" r=".6" fill="currentColor"/></svg>',
+ pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>',
+ car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 16V12l2-5h10l2 5v4z"/><circle cx="8" cy="16.5" r="1.5"/><circle cx="16" cy="16.5" r="1.5"/></svg>',
+ phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.7 6.7l1.3-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5.5a2 2 0 0 1 2-2z"/></svg>',
+ wa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>',
+ mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>',
+ chev:'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>',
+ ok:'<svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16 9.5"/></svg>',
+ no:'<svg viewBox="0 0 24 24" fill="none" stroke="#b8a587" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>'
+};
+let D=null,day=0;
+
+async function sha(s){
+  if(window.crypto&&crypto.subtle){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+  return s==='PVKS2026!'?HASH:'';
+}
+function unlock(){ $('#lock').remove(); $('#app').hidden=false; $('#nav').hidden=false; load(); }
+$('#lf').addEventListener('submit',async e=>{e.preventDefault();
+  if(await sha($('#pw').value)===HASH){store.set('cea_ok',HASH);unlock()}
+  else{$('#err').textContent='Senha incorreta';$('#pw').select()}});
+
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2600)}
+function net(){const on=navigator.onLine;$('#st').classList.toggle('off',!on);$('#stt').textContent=on?'Online':'Offline · dados salvos'}
+addEventListener('online',()=>{net();load(true)});addEventListener('offline',net);
+
+async function load(silent){
+  net();
+  let cached=store.get('cea_data');try{if(cached&&!JSON.parse(cached).pracas)cached=null}catch(_){cached=null}
+  if(!D){D=cached?JSON.parse(cached):FALLBACK; if(D)render()}
+  try{
+    const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw 0;
+    const n=await r.json();
+    if(!D||n.versao!==D.versao){const had=!!D;D=n;store.set('cea_data',JSON.stringify(n));render();if(had)toast('Informações atualizadas')}
+  }catch(_){}
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&D)load(true)});
+
+const maps=a=>'https://maps.apple.com/?q='+encodeURIComponent(a+', São Paulo - SP');
+const gmaps=a=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a+', São Paulo - SP');
+const uber=a=>'https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]='+encodeURIComponent(a+', São Paulo - SP');
+const isApple=/iPhone|iPad|Mac/.test(navigator.userAgent);
+
+function render(){try{renderAll()}catch(e){console.error(e);if(D!==FALLBACK&&FALLBACK){D=FALLBACK;try{renderAll()}catch(_){}}}}
+function renderAll(){
+  const p=D.pracas[0];
+  $('#psub').textContent=p.nome+' · '+p.periodo+' · '+p.resumo;
+  $('#notices').innerHTML=(D.avisos||[]).map(a=>'<div class="notice">'+esc(a)+'</div>').join('');
+  const today=todayStr();
+  const ti=p.dias.findIndex(d=>d.data===today); if(ti>=0&&!render.done)day=ti; render.done=1;
+  $('#days').innerHTML=p.dias.map((d,i)=>`<button type="button" role="tab" aria-selected="${i===day}" class="${i===day?'on':''}" data-i="${i}">${esc(d.titulo)}<small>${fmtDay(d.data)}</small></button>`).join('');
+  $('#days').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{day=+b.dataset.i;render()}));
+  const d=p.dias[day];
+  $('#team').innerHTML=`<div><span>Moderação</span><strong>${esc(d.moderacao)}</strong></div><div><span>Acompanha</span><strong>${esc(d.acompanha)}</strong></div><div><span>Locomoção</span><strong>${esc(d.transporte)}</strong></div>`;
+  const nowIdx=(()=>{if(d.data!==today)return -1;const h=new Date().getHours();return h<13?0:2})();
+  $('#tl').innerHTML=d.visitas.map((v,i)=>{
+    const after=!/^\d/.test(v.hora), last=i===d.visitas.length-1;
+    return `<div class="v"><div class="rail"><div class="h ${after?'after':''}">${after?'depois':esc(v.hora)}</div>${last?'':'<div class="ln"></div>'}</div>
+    <div class="card ${v.tipo} ${i===nowIdx?'now':''}">
+      <div class="kind">${v.tipo==='casa'?I.home+'Etnografia em casa':I.bag+'Visita à loja'}${i===nowIdx?'<span class="tag">Agora</span>':''}</div>
+      <h3>${esc(v.nome)}</h3><p>${esc(v.endereco)}</p>
+      <div class="acts"><a class="btn" href="${isApple?maps(v.endereco):gmaps(v.endereco)}" target="_blank" rel="noopener">${I.pin}Mapa</a><a class="btn ghost" href="${uber(v.endereco)}" target="_blank" rel="noopener">${I.car}Uber</a></div>
+    </div></div>`}).join('');
+  $('#manual').innerHTML='<h2 class="sec">Antes de entrar</h2>'+D.manual.map((m,i)=>`<details class="item" ${i===0?'open':''}><summary><span class="ic">${I[m.icone]||I.question}</span><b>${esc(m.titulo)}</b>${I.chev}</summary><div class="body">${m.texto.map(t=>'<p>'+esc(t)+'</p>').join('')}</div></details>`).join('');
+  $('#dd').innerHTML=`<div class="col do"><h4>Pode</h4><ul>${D.dos.map(t=>'<li>'+I.ok+esc(t)+'</li>').join('')}</ul></div><div class="col dont"><h4>Evite</h4><ul>${D.donts.map(t=>'<li>'+I.no+esc(t)+'</li>').join('')}</ul></div>`;
+  $('#cts').innerHTML=D.contatos.map(c=>{const ini=c.nome.split(' ').map(x=>x[0]).slice(0,2).join('');
+    return `<div class="ct"><div class="av">${esc(ini)}</div><div style="flex:1;min-width:0"><h3>${esc(c.nome)}</h3><p>${esc(c.papel)}</p>
+    <div class="ln2">${esc(c.telFmt)}</div><div class="ln2" style="color:var(--ink2)">${esc(c.email)}</div>
+    <div class="acts">${c.tel?`<a class="btn" href="tel:${esc(c.tel)}">${I.phone}Ligar</a><a class="btn ghost" href="https://wa.me/${esc(c.tel.replace(/\D/g,''))}" target="_blank" rel="noopener">${I.wa}WhatsApp</a>`:''}<a class="btn ghost" href="mailto:${esc(c.email)}">${I.mail}E-mail</a></div></div></div>`}).join('');
+  $('#ver').textContent='Atualizado em '+D.versao;
+}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));
+  scrollTo({top:0,behavior:'smooth'});
+}));
+if(store.get('cea_ok')===HASH) unlock();
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
+})();
+</script>
+</body>
+</html>

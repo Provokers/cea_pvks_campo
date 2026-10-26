@@ -1,0 +1,170 @@
+{
+  "versao": "2026-10-26 15:50",
+  "projeto": "P12264 · Estudo Armários do Brasil",
+  "cliente": "C&A",
+  "pracas": [
+    {
+      "id": "sp",
+      "nome": "São Paulo",
+      "periodo": "28 a 30 de outubro de 2026",
+      "resumo": "6 etnografias · 6 visitas a lojas",
+      "dias": [
+        {
+          "data": "2026-10-28",
+          "titulo": "Dia 1",
+          "moderacao": "Karin",
+          "acompanha": "Gabi",
+          "transporte": "Uber",
+          "visitas": [
+            {
+              "hora": "09:00",
+              "tipo": "casa",
+              "nome": "Paula Regina B.",
+              "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"
+            },
+            {
+              "hora": "Após a casa",
+              "tipo": "loja",
+              "nome": "C&A Shopping Metrô Tatuapé",
+              "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"
+            },
+            {
+              "hora": "15:00",
+              "tipo": "casa",
+              "nome": "Paula S.",
+              "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"
+            },
+            {
+              "hora": "Após a casa",
+              "tipo": "loja",
+              "nome": "C&A Shopping Metrô Itaquera",
+              "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"
+            }
+          ]
+        },
+        {
+          "data": "2026-10-29",
+          "titulo": "Dia 2",
+          "moderacao": "Karin",
+          "acompanha": "Gustavo",
+          "transporte": "Uber",
+          "visitas": [
+            {
+              "hora": "09:00",
+              "tipo": "casa",
+              "nome": "Rovesca J.",
+              "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"
+            },
+            {
+              "hora": "Após a casa",
+              "tipo": "loja",
+              "nome": "C&A Shopping Morumbi",
+              "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"
+            },
+            {
+              "hora": "15:00",
+              "tipo": "casa",
+              "nome": "Jozeane I.",
+              "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"
+            },
+            {
+              "hora": "Após a casa",
+              "tipo": "loja",
+              "nome": "C&A Shopping Interlagos",
+              "endereco": "Av. Interlagos, 2255 · Interlagos"
+            }
+          ]
+        },
+        {
+          "data": "2026-10-30",
+          "titulo": "Dia 3",
+          "moderacao": "Luna",
+          "acompanha": "Gabi",
+          "transporte": "Uber",
+          "visitas": [
+            {
+              "hora": "09:00",
+              "tipo": "casa",
+              "nome": "Vivian C.",
+              "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"
+            },
+            {
+              "hora": "Após a casa",
+              "tipo": "loja",
+              "nome": "C&A Av. Paulista / Centro (rua)",
+              "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"
+            },
+            {
+              "hora": "15:00",
+              "tipo": "casa",
+              "nome": "Vitória S.",
+              "endereco": "Av. Handu, 1361 · Planalto Paulista"
+            },
+            {
+              "hora": "Após a casa",
+              "tipo": "loja",
+              "nome": "C&A Shopping Ibirapuera",
+              "endereco": "Av. Ibirapuera, 3103 · Indianópolis"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "manual": [
+    {
+      "icone": "home",
+      "titulo": "Estamos entrando na casa de alguém",
+      "texto": [
+        "Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes.",
+        "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos.",
+        "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."
+      ]
+    },
+    {
+      "icone": "shirt",
+      "titulo": "Como me vestir",
+      "texto": [
+        "Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis.",
+        "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."
+      ]
+    },
+    {
+      "icone": "question",
+      "titulo": "Tenho uma pergunta. Posso fazer?",
+      "texto": [
+        "Durante a entrevista, anote perguntas e impressões e deixe para conversar ao final da visita.",
+        "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto.",
+        "Assim preservamos o fluxo da conversa e evitamos interferir na condução da moderadora."
+      ]
+    }
+  ],
+  "dos": [
+    "Cumprimentar e agradecer por estar nos recebendo",
+    "Ser simpático e receptivo caso ela inicie uma conversa",
+    "Demonstrar interesse de maneira natural, sem julgamentos",
+    "Respeitar os espaços indicados pela entrevistada e pela equipe"
+  ],
+  "donts": [
+    "Completar respostas ou dar exemplos que possam influenciar o que ela dirá",
+    "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa",
+    "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"
+  ],
+  "contatos": [
+    {
+      "nome": "Gabriela Sartoretto",
+      "papel": "Acompanhamento do cliente · ponto de contato principal em campo",
+      "tel": "+5511950600210",
+      "telFmt": "(11) 95060-0210",
+      "email": "gabriela.sartoretto@provokers.com.br"
+    },
+    {
+      "nome": "Gustavo Pelegrini",
+      "papel": "Acompanhamento do cliente",
+      "tel": "+5511982623956",
+      "telFmt": "(11) 98262-3956",
+      "email": "gustavo.pelegrini@provokers.com.br"
+    }
+  ],
+  "avisos": []
+}
