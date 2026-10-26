@@ -1,11 +1,34 @@
 {
-  "versao": "2026-10-26 16:20",
+  "versao": "2026-10-26 16:50",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
+  "pessoas": {
+    "Karin": {
+      "nome": "Karin",
+      "papel": "Moderação",
+      "cor": "#B5694A"
+    },
+    "Luna": {
+      "nome": "Luna",
+      "papel": "Moderação",
+      "cor": "#6E8B74"
+    },
+    "Gabi": {
+      "nome": "Gabriela Sartoretto",
+      "papel": "Acompanhamento",
+      "cor": "#5F7FA3"
+    },
+    "Gustavo": {
+      "nome": "Gustavo Pelegrini",
+      "papel": "Acompanhamento",
+      "cor": "#8A6A8C"
+    }
+  },
   "pracas": [
     {
       "id": "sp",
       "nome": "São Paulo",
+      "cidade": "São Paulo - SP",
       "periodo": "28 a 30 de outubro de 2026",
       "resumo": "6 etnografias · 6 visitas a lojas",
       "dias": [
@@ -153,43 +176,21 @@
   ],
   "contatos": [
     {
+      "pessoa": "Gabi",
       "nome": "Gabriela Sartoretto",
       "papel": "Acompanhamento do cliente · ponto de contato principal em campo",
       "tel": "+5511950600210",
       "telFmt": "(11) 95060-0210",
-      "email": "gabriela.sartoretto@provokers.com.br",
-      "pessoa": "Gabi"
+      "email": "gabriela.sartoretto@provokers.com.br"
     },
     {
+      "pessoa": "Gustavo",
       "nome": "Gustavo Pelegrini",
       "papel": "Acompanhamento do cliente",
       "tel": "+5511982623956",
       "telFmt": "(11) 98262-3956",
-      "email": "gustavo.pelegrini@provokers.com.br",
-      "pessoa": "Gustavo"
+      "email": "gustavo.pelegrini@provokers.com.br"
     }
   ],
-  "avisos": [],
-  "pessoas": {
-    "Karin": {
-      "nome": "Karin",
-      "papel": "Moderação",
-      "cor": "#B5694A"
-    },
-    "Luna": {
-      "nome": "Luna",
-      "papel": "Moderação",
-      "cor": "#6E8B74"
-    },
-    "Gabi": {
-      "nome": "Gabriela Sartoretto",
-      "papel": "Acompanhamento",
-      "cor": "#5F7FA3"
-    },
-    "Gustavo": {
-      "nome": "Gustavo Pelegrini",
-      "papel": "Acompanhamento",
-      "cor": "#8A6A8C"
-    }
-  }
+  "avisos": []
 }

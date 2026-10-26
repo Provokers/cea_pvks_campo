@@ -1,14 +1,17 @@
 # C&A Campo · Provokers
 
 ## Publicar no GitHub Pages
-1. Crie um repositório (pode ser privado com Pages habilitado no plano pago, ou público).
-2. Suba todos os arquivos desta pasta na raiz.
-3. Settings > Pages > Deploy from branch > main / root.
+1. Crie um repositório e suba todos os arquivos desta pasta na raiz.
+2. Settings > Pages > Deploy from branch > main / root.
 
 ## Atualizar informações
-Edite apenas `data.json` (agenda, manual, contatos, avisos) e altere o campo `versao`.
-Quem abrir o app com internet recebe a atualização na hora. Offline, o app mostra a última versão salva.
-Para exibir um aviso no topo da agenda: `"avisos": ["Visita das 15h atrasada 30 min"]`.
+Edite apenas `data.json` e altere o campo `versao`. Quem abrir com internet recebe na hora; offline, vale a última versão salva.
+Aviso no topo da agenda: `"avisos": ["Visita das 15h atrasada 30 min"]`.
+
+## Uber com destino preenchido
+O Uber só garante o destino preenchido quando recebe coordenadas. Em cada visita, adicione `"lat"` e `"lng"`
+(no Google Maps: toque e segure no endereço, copie os números). Ex.: `"lat": -23.5401, "lng": -46.5768`.
+Sem coordenadas, o app envia só o endereço em texto.
 
 ## Senha
-Validação local por hash (PVKS2026!). Funciona como barreira de acesso, mas não é criptografia do conteúdo: o data.json fica público na URL.
+Validação local por hash (PVKS2026!). Barreira de acesso, não criptografia: o data.json fica acessível pela URL direta.
