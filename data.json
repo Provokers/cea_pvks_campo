@@ -1,5 +1,5 @@
 {
-  "versao": "2026-10-26 18:30",
+  "versao": "2026-10-26 19:00",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
@@ -33,7 +33,7 @@
       },
       {
         "icone": "car",
-        "t": "Locomoção sugerida: Uber, mas não é obrigatório."
+        "t": "Sugerimos ir de Uber."
       }
     ]
   },
@@ -279,7 +279,7 @@
         },
         {
           "icone": "car",
-          "t": "Locomoção sugerida: Uber, mas não é obrigatório. Respeite o horário de encontro."
+          "t": "Sugerimos ir de Uber. Chegue no horário de encontro."
         }
       ]
     },
