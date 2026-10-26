@@ -1,5 +1,5 @@
 {
-  "versao": "2026-10-26 15:50",
+  "versao": "2026-10-26 16:20",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pracas": [
@@ -133,9 +133,9 @@
       "icone": "question",
       "titulo": "Tenho uma pergunta. Posso fazer?",
       "texto": [
-        "Durante a entrevista, anote perguntas e impressões e deixe para conversar ao final da visita.",
-        "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto.",
-        "Assim preservamos o fluxo da conversa e evitamos interferir na condução da moderadora."
+        "Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita.",
+        "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho.",
+        "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."
       ]
     }
   ],
@@ -146,6 +146,7 @@
     "Respeitar os espaços indicados pela entrevistada e pela equipe"
   ],
   "donts": [
+    "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora",
     "Completar respostas ou dar exemplos que possam influenciar o que ela dirá",
     "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa",
     "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"
@@ -156,15 +157,39 @@
       "papel": "Acompanhamento do cliente · ponto de contato principal em campo",
       "tel": "+5511950600210",
       "telFmt": "(11) 95060-0210",
-      "email": "gabriela.sartoretto@provokers.com.br"
+      "email": "gabriela.sartoretto@provokers.com.br",
+      "pessoa": "Gabi"
     },
     {
       "nome": "Gustavo Pelegrini",
       "papel": "Acompanhamento do cliente",
       "tel": "+5511982623956",
       "telFmt": "(11) 98262-3956",
-      "email": "gustavo.pelegrini@provokers.com.br"
+      "email": "gustavo.pelegrini@provokers.com.br",
+      "pessoa": "Gustavo"
     }
   ],
-  "avisos": []
+  "avisos": [],
+  "pessoas": {
+    "Karin": {
+      "nome": "Karin",
+      "papel": "Moderação",
+      "cor": "#B5694A"
+    },
+    "Luna": {
+      "nome": "Luna",
+      "papel": "Moderação",
+      "cor": "#6E8B74"
+    },
+    "Gabi": {
+      "nome": "Gabriela Sartoretto",
+      "papel": "Acompanhamento",
+      "cor": "#5F7FA3"
+    },
+    "Gustavo": {
+      "nome": "Gustavo Pelegrini",
+      "papel": "Acompanhamento",
+      "cor": "#8A6A8C"
+    }
+  }
 }

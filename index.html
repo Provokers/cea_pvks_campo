@@ -13,16 +13,25 @@
 <link rel="icon" href="icon-192.png">
 <title>C&A Campo · Provokers</title>
 <style>
-:root{--ink:#111;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e8e6e1;--bg:#fff;--soft:#f5f3ef;--beige:#e9e1d3;--beige2:#b8a587;--r:18px;
+:root{--ink:#111;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e8e6e1;--bg:#fff;--soft:#f5f3ef;--beige:#e9e1d3;
+--d-bg:#f6f1e8;--d-mid:#ebe1cf;--d-str:#cdb994;--r:18px;--navh:62px;
 --f:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif}
+.d0{--d-bg:#f7f2ea;--d-mid:#efe6d6;--d-str:#d9c9a8}
+.d1{--d-bg:#f1e8da;--d-mid:#e3d3b9;--d-str:#bfa47a}
+.d2{--d-bg:#ebdfcc;--d-mid:#d6c09e;--d-str:#a3855a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased;overflow:hidden}
+h1,h2,h3,h4,b,strong{text-wrap:balance}
+p,li,.sub{text-wrap:pretty}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:560px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 20px calc(env(safe-area-inset-bottom) + 96px)}
+/* shell: conteúdo rola, rodapé fica fixo */
+#shell{position:fixed;inset:0;display:flex;flex-direction:column}
+#scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.wrap{max-width:560px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 12px) 20px 32px}
 /* login */
 #lock{position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;z-index:50}
-#lock img.cea{width:92px;margin-bottom:36px}
+#lock img.cea{width:96px;margin-bottom:36px}
 #lock h1{font-weight:300;font-size:34px;line-height:1.05;letter-spacing:-.02em;margin:0 0 28px;text-align:center}
 #lock h1 b{font-weight:700}
 #lock form{width:100%;max-width:320px}
@@ -31,53 +40,67 @@ a{color:inherit;text-decoration:none}
 #lock .go{width:100%;height:52px;border-radius:14px;background:var(--ink);color:#fff;font-weight:600;font-size:17px;margin-top:12px}
 #lock .err{color:#b3261e;font-size:14px;height:20px;margin-top:10px;text-align:center}
 #lock .pv{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 28px);width:110px;opacity:.85}
-/* header */
 .top{display:flex;align-items:center;justify-content:space-between;padding:6px 0 18px}
 .top img.cea{height:34px}
 .status{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:6px}
 .dot{width:7px;height:7px;border-radius:50%;background:#34c759}
 .off .dot{background:var(--ink3)}
-h1.big{font-weight:300;font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:8px 0 6px}
+h1.big{font-weight:300;font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:8px 0 8px}
 h1.big b{font-weight:700}
-.sub{color:var(--ink2);font-size:15px;margin:0 0 24px}
-/* segment */
-.seg{display:flex;background:var(--soft);border-radius:12px;padding:3px;margin-bottom:20px}
-.seg button{flex:1;height:40px;border-radius:10px;font-size:14px;font-weight:500;color:var(--ink2);line-height:1.1}
-.seg button small{display:block;font-size:11px;font-weight:400}
-.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
-/* day */
-.team{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}
-.team div{background:var(--soft);border-radius:14px;padding:12px}
-.team span{display:block;font-size:12px;color:var(--ink2);margin-bottom:3px}
-.team strong{font-size:15px;font-weight:600}
-.tl{position:relative}
-.v{display:flex;gap:14px;padding-bottom:12px}
-.v .rail{display:flex;flex-direction:column;align-items:center;width:44px;flex:none}
+.sub{color:var(--ink2);font-size:15px;line-height:1.4;margin:0 0 24px}
+/* dias */
+.seg{display:flex;gap:6px;margin-bottom:16px}
+.seg button{flex:1;border-radius:14px;padding:10px 4px;font-size:15px;font-weight:600;line-height:1.15;color:var(--ink2);background:var(--soft);transition:background .2s,color .2s}
+.seg button small{display:block;font-size:11px;font-weight:400;margin-top:2px}
+.seg button.on{color:var(--ink)}
+.seg button.d0.on{background:#efe6d6}.seg button.d1.on{background:#e3d3b9}.seg button.d2.on{background:#d6c09e}
+.seg button .sw{display:block;width:18px;height:3px;border-radius:2px;margin:6px auto 0}
+.seg .d0 .sw{background:#d9c9a8}.seg .d1 .sw{background:#bfa47a}.seg .d2 .sw{background:#a3855a}
+.day{background:var(--d-bg);border-radius:24px;padding:14px;transition:background .25s}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.team div{background:#fff;border-radius:14px;padding:11px 12px}
+.team span{display:block;font-size:12px;color:var(--ink2);margin-bottom:4px}
+.team strong{font-size:15px;font-weight:600;display:flex;align-items:center;gap:6px}
+.pdot{width:9px;height:9px;border-radius:50%;flex:none}
+.prog{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink2);margin:4px 2px 14px}
+.bar{flex:1;height:4px;border-radius:2px;background:rgba(0,0,0,.07);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ink);transition:width .3s}
+.v{display:flex;gap:12px;padding-bottom:10px}
+.v:last-child{padding-bottom:0}
+.v .rail{display:flex;flex-direction:column;align-items:center;width:42px;flex:none}
 .v .h{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;padding-top:18px}
 .v .h.after{font-size:11px;font-weight:500;color:var(--ink2);text-align:center;line-height:1.2}
-.v .ln{flex:1;width:1px;background:var(--line);margin-top:8px}
-.card{flex:1;border:1px solid var(--line);border-radius:var(--r);padding:16px;background:#fff}
-.card.loja{background:var(--soft);border-color:transparent}
-.card.now{border-color:var(--ink);box-shadow:0 6px 24px rgba(0,0,0,.06)}
-.kind{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);margin-bottom:6px}
+.v .ln{flex:1;width:1px;background:var(--d-str);opacity:.6;margin-top:8px}
+.card{flex:1;border-radius:var(--r);padding:16px;background:#fff;transition:opacity .2s;min-width:0}
+.card.loja{background:var(--d-mid)}
+.card.now{box-shadow:0 0 0 1.5px var(--ink),0 6px 24px rgba(0,0,0,.06)}
+.card.done{opacity:.55}
+.card.done h3{text-decoration:line-through;text-decoration-thickness:1px}
+.chead{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.kind{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);flex:1;padding-top:4px}
 .kind svg{width:14px;height:14px}
-.tag{margin-left:auto;background:var(--beige);color:var(--ink);font-size:11px;font-weight:600;border-radius:99px;padding:3px 9px}
+.tag{background:var(--ink);color:#fff;font-size:11px;font-weight:600;border-radius:99px;padding:2px 8px;margin-left:4px}
+.chk{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--d-str);display:grid;place-items:center;flex:none;background:#fff;transition:all .2s}
+.chk svg{width:16px;height:16px;opacity:0;transition:opacity .2s}
+.chk[aria-pressed="true"]{background:var(--ink);border-color:var(--ink)}
+.chk[aria-pressed="true"] svg{opacity:1}
 .card h3{margin:0 0 4px;font-size:18px;font-weight:600;letter-spacing:-.01em}
 .card p{margin:0;color:var(--ink2);font-size:14px;line-height:1.4}
 .acts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:99px;font-size:14px;font-weight:500;background:var(--ink);color:#fff}
 .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.ico{width:36px;padding:0;justify-content:center}
 .btn svg{width:15px;height:15px}
 /* manual */
 .sec{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:34px 0 14px}
-.sec:first-of-type{margin-top:8px}
+.sec.first{margin-top:8px}
 .item{border-bottom:1px solid var(--line)}
 .item summary{list-style:none;display:flex;align-items:center;gap:14px;padding:18px 0;cursor:pointer}
 .item summary::-webkit-details-marker{display:none}
 .ic{width:40px;height:40px;border-radius:12px;background:var(--beige);display:grid;place-items:center;flex:none}
 .ic svg{width:20px;height:20px}
 .item summary b{font-size:16px;font-weight:600;flex:1}
-.chev{width:16px;height:16px;transition:transform .25s;color:var(--ink3)}
+.chev{width:16px;height:16px;transition:transform .25s;color:var(--ink3);flex:none}
 .item[open] .chev{transform:rotate(90deg)}
 .item .body{padding:0 0 18px 54px;color:#3a3a3c;font-size:15px;line-height:1.5}
 .item .body p{margin:0 0 10px}
@@ -91,22 +114,24 @@ h1.big b{font-weight:700}
 .dd li svg{width:18px;height:18px;flex:none;margin-top:1px}
 /* contatos */
 .ct{border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start}
-.av{width:48px;height:48px;border-radius:50%;background:var(--beige);display:grid;place-items:center;font-weight:600;font-size:16px;flex:none}
+.av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:16px;flex:none;color:#fff}
 .ct h3{margin:2px 0 2px;font-size:17px;font-weight:600}
-.ct p{margin:0 0 4px;font-size:13px;color:var(--ink2);line-height:1.35}
-.ct .ln2{font-size:14px;margin-top:2px;word-break:break-all}
+.ct p{margin:0 0 6px;font-size:13px;color:var(--ink2);line-height:1.35}
+.ct .ln2{font-size:14px;margin-top:2px;overflow-wrap:anywhere}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.legend>span{display:inline-flex;align-items:center;gap:6px;font-size:13px;background:var(--soft);border-radius:99px;padding:6px 12px}
 .foot{display:flex;align-items:center;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3)}
 .foot img{height:18px;opacity:.8}
 .notice{background:var(--beige);border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.4;margin-bottom:18px}
-/* tabbar */
-nav{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:10}
+/* rodapé fixo */
+nav{flex:none;background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
 nav .in{max-width:560px;margin:0 auto;display:flex}
 nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0 7px;font-size:11px;color:var(--ink3)}
 nav button svg{width:24px;height:24px}
 nav button.on{color:var(--ink)}
 .view{display:none;animation:fade .25s ease}
 .view.on{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
 .toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 12px);transform:translate(-50%,-80px);background:var(--ink);color:#fff;font-size:13px;padding:10px 16px;border-radius:99px;transition:transform .35s;z-index:60}
 .toast.show{transform:translate(-50%,0)}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
@@ -118,14 +143,15 @@ nav button.on{color:var(--ink)}
   <h1>campo que<br><b>inspira.</b></h1>
   <form id="lf" autocomplete="off">
     <label for="pw" style="position:absolute;left:-9999px">Senha</label>
-    <input id="pw" type="password" placeholder="Senha de acesso" inputmode="text" autocapitalize="off">
+    <input id="pw" type="password" placeholder="Senha de acesso" autocapitalize="off">
     <button class="go" type="submit">Entrar</button>
     <div class="err" id="err" aria-live="polite"></div>
   </form>
   <img class="pv" src="provokers.png" alt="Provokers">
 </div>
 
-<div class="wrap" id="app" hidden>
+<div id="shell" hidden>
+ <div id="scroll"><div class="wrap">
   <div class="top">
     <img class="cea" src="cea.png" alt="C&A">
     <div class="status" id="st"><span class="dot"></span><span id="stt">Online</span></div>
@@ -136,44 +162,56 @@ nav button.on{color:var(--ink)}
     <p class="sub" id="psub"></p>
     <div id="notices"></div>
     <div class="seg" id="days" role="tablist"></div>
-    <div class="team" id="team"></div>
-    <div class="tl" id="tl"></div>
+    <div class="day" id="day">
+      <div class="team" id="team"></div>
+      <div class="prog" id="prog"></div>
+      <div id="tl"></div>
+    </div>
   </section>
 
   <section class="view" id="v-manual">
     <h1 class="big">manual de<br><b>campo.</b></h1>
-    <p class="sub">Para uma visita respeitosa, confortável e enriquecedora para todos.</p>
+    <p class="sub">Para uma visita respeitosa, confortável e enriquecedora para&nbsp;todos.</p>
     <div id="manual"></div>
-    <h2 class="sec">Pode e não pode</h2>
+    <h2 class="sec">Pode e não&nbsp;pode</h2>
     <div class="dd" id="dd"></div>
   </section>
 
   <section class="view" id="v-contatos">
     <h1 class="big">contatos<br><b>provokers.</b></h1>
-    <p class="sub">Qualquer dúvida ou necessidade durante as visitas, fale com quem acompanha.</p>
+    <p class="sub">Qualquer dúvida ou necessidade durante as visitas, fale com quem&nbsp;acompanha.</p>
     <div id="cts"></div>
+    <h2 class="sec">Equipe de&nbsp;campo</h2>
+    <div class="legend" id="legend"></div>
   </section>
 
   <div class="foot"><span id="ver"></span><img src="provokers.png" alt="Provokers"></div>
-</div>
+ </div></div>
 
-<nav id="nav" hidden><div class="in">
+ <nav id="nav"><div class="in">
   <button type="button" data-v="agenda" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Agenda</button>
   <button type="button" data-v="manual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4.5h10a4 4 0 0 1 4 4v11H9a4 4 0 0 1-4-4z"/><path d="M9 9h6M9 13h6"/></svg>Manual</button>
   <button type="button" data-v="contatos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Contatos</button>
-</div></nav>
+ </div></nav>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (()=>{
 const HASH='e350ef425bd36ffa4a5e58d7c13ac9ee509436eef3a5a4a493dc3e089de78820';
-const FALLBACK={"versao": "2026-10-26 15:50", "projeto": "P12264 · Estudo Armários do Brasil", "cliente": "C&A", "pracas": [{"id": "sp", "nome": "São Paulo", "periodo": "28 a 30 de outubro de 2026", "resumo": "6 etnografias · 6 visitas a lojas", "dias": [{"data": "2026-10-28", "titulo": "Dia 1", "moderacao": "Karin", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Paula Regina B.", "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Tatuapé", "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"}, {"hora": "15:00", "tipo": "casa", "nome": "Paula S.", "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Itaquera", "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"}]}, {"data": "2026-10-29", "titulo": "Dia 2", "moderacao": "Karin", "acompanha": "Gustavo", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Rovesca J.", "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Morumbi", "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"}, {"hora": "15:00", "tipo": "casa", "nome": "Jozeane I.", "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Interlagos", "endereco": "Av. Interlagos, 2255 · Interlagos"}]}, {"data": "2026-10-30", "titulo": "Dia 3", "moderacao": "Luna", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Vivian C.", "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Av. Paulista / Centro (rua)", "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"}, {"hora": "15:00", "tipo": "casa", "nome": "Vitória S.", "endereco": "Av. Handu, 1361 · Planalto Paulista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Ibirapuera", "endereco": "Av. Ibirapuera, 3103 · Indianópolis"}]}]}], "manual": [{"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": ["Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes.", "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos.", "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": ["Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis.", "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": ["Durante a entrevista, anote perguntas e impressões e deixe para conversar ao final da visita.", "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto.", "Assim preservamos o fluxo da conversa e evitamos interferir na condução da moderadora."]}], "dos": ["Cumprimentar e agradecer por estar nos recebendo", "Ser simpático e receptivo caso ela inicie uma conversa", "Demonstrar interesse de maneira natural, sem julgamentos", "Respeitar os espaços indicados pela entrevistada e pela equipe"], "donts": ["Completar respostas ou dar exemplos que possam influenciar o que ela dirá", "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa", "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"], "contatos": [{"nome": "Gabriela Sartoretto", "papel": "Acompanhamento do cliente · ponto de contato principal em campo", "tel": "+5511950600210", "telFmt": "(11) 95060-0210", "email": "gabriela.sartoretto@provokers.com.br"}, {"nome": "Gustavo Pelegrini", "papel": "Acompanhamento do cliente", "tel": "+5511982623956", "telFmt": "(11) 98262-3956", "email": "gustavo.pelegrini@provokers.com.br"}], "avisos": []};
-const WD=['dom','seg','ter','qua','qui','sex','sáb'];
-const fmtDay=s=>{const [y,m,d]=String(s).split('-').map(Number);if(!y)return '';const w=new Date(y,m-1,d).getDay();return WD[w]+', '+String(d).padStart(2,'0')+'/'+String(m).padStart(2,'0')};
-const todayStr=()=>{const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')};
+const FALLBACK={"versao": "2026-10-26 16:20", "projeto": "P12264 · Estudo Armários do Brasil", "cliente": "C&A", "pracas": [{"id": "sp", "nome": "São Paulo", "periodo": "28 a 30 de outubro de 2026", "resumo": "6 etnografias · 6 visitas a lojas", "dias": [{"data": "2026-10-28", "titulo": "Dia 1", "moderacao": "Karin", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Paula Regina B.", "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Tatuapé", "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"}, {"hora": "15:00", "tipo": "casa", "nome": "Paula S.", "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Itaquera", "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"}]}, {"data": "2026-10-29", "titulo": "Dia 2", "moderacao": "Karin", "acompanha": "Gustavo", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Rovesca J.", "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Morumbi", "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"}, {"hora": "15:00", "tipo": "casa", "nome": "Jozeane I.", "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Interlagos", "endereco": "Av. Interlagos, 2255 · Interlagos"}]}, {"data": "2026-10-30", "titulo": "Dia 3", "moderacao": "Luna", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Vivian C.", "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Av. Paulista / Centro (rua)", "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"}, {"hora": "15:00", "tipo": "casa", "nome": "Vitória S.", "endereco": "Av. Handu, 1361 · Planalto Paulista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Ibirapuera", "endereco": "Av. Ibirapuera, 3103 · Indianópolis"}]}]}], "manual": [{"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": ["Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes.", "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos.", "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": ["Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis.", "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": ["Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita.", "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho.", "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."]}], "dos": ["Cumprimentar e agradecer por estar nos recebendo", "Ser simpático e receptivo caso ela inicie uma conversa", "Demonstrar interesse de maneira natural, sem julgamentos", "Respeitar os espaços indicados pela entrevistada e pela equipe"], "donts": ["Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora", "Completar respostas ou dar exemplos que possam influenciar o que ela dirá", "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa", "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"], "contatos": [{"nome": "Gabriela Sartoretto", "papel": "Acompanhamento do cliente · ponto de contato principal em campo", "tel": "+5511950600210", "telFmt": "(11) 95060-0210", "email": "gabriela.sartoretto@provokers.com.br", "pessoa": "Gabi"}, {"nome": "Gustavo Pelegrini", "papel": "Acompanhamento do cliente", "tel": "+5511982623956", "telFmt": "(11) 98262-3956", "email": "gustavo.pelegrini@provokers.com.br", "pessoa": "Gustavo"}], "avisos": [], "pessoas": {"Karin": {"nome": "Karin", "papel": "Moderação", "cor": "#B5694A"}, "Luna": {"nome": "Luna", "papel": "Moderação", "cor": "#6E8B74"}, "Gabi": {"nome": "Gabriela Sartoretto", "papel": "Acompanhamento", "cor": "#5F7FA3"}, "Gustavo": {"nome": "Gustavo Pelegrini", "papel": "Acompanhamento", "cor": "#8A6A8C"}}};
 const store={get:k=>{try{return window.localStorage.getItem(k)}catch(_){return null}},set:(k,v)=>{try{window.localStorage.setItem(k,v)}catch(_){}}};
+const WD=['dom','seg','ter','qua','qui','sex','sáb'];
+const fmtDay=s=>{const [y,m,d]=String(s).split('-').map(Number);if(!y)return '';return WD[new Date(y,m-1,d).getDay()]+', '+String(d).padStart(2,'0')+'/'+String(m).padStart(2,'0')};
+const todayStr=()=>{const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')};
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* tipografia: sem órfãs e viúvas. Prende palavras curtas à seguinte, "·" à palavra seguinte e as duas últimas palavras */
+const NB='\u00a0';
+const nb=t=>{let s=String(t??'').trim().replace(/\s+/g,' ');
+  s=s.replace(/(?<=^|[ \u00a0])([A-Za-zÀ-ú]{1,2}|\d+[.,]?|·|ap\.|Av\.|Dr\.|Prof\.|nº)\s/g,'$1'+NB);
+  s=s.replace(/ (\S+)$/,NB+'$1');return esc(s)};
+const isApple=/iPhone|iPad|Mac/.test(navigator.userAgent);
 const I={
  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11l8-6.5 8 6.5V20H4z"/><path d="M10 20v-5h4v5"/></svg>',
  bag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>',
@@ -185,28 +223,30 @@ const I={
  wa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>',
  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>',
  chev:'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>',
+ tick:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4 8-9"/></svg>',
  ok:'<svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16 9.5"/></svg>',
- no:'<svg viewBox="0 0 24 24" fill="none" stroke="#b8a587" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>'
+ no:'<svg viewBox="0 0 24 24" fill="none" stroke="#a3855a" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>'
 };
-let D=null,day=0;
+let D=null,day=0,chosen=false;
+let done={};try{done=JSON.parse(store.get('cea_done')||'{}')||{}}catch(_){done={}}
 
 async function sha(s){
   if(window.crypto&&crypto.subtle){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
   return s==='PVKS2026!'?HASH:'';
 }
-function unlock(){ $('#lock').remove(); $('#app').hidden=false; $('#nav').hidden=false; load(); }
+function unlock(){const l=$('#lock');if(l)l.remove();$('#shell').hidden=false;load()}
 $('#lf').addEventListener('submit',async e=>{e.preventDefault();
   if(await sha($('#pw').value)===HASH){store.set('cea_ok',HASH);unlock()}
   else{$('#err').textContent='Senha incorreta';$('#pw').select()}});
 
 function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2600)}
 function net(){const on=navigator.onLine;$('#st').classList.toggle('off',!on);$('#stt').textContent=on?'Online':'Offline · dados salvos'}
-addEventListener('online',()=>{net();load(true)});addEventListener('offline',net);
+addEventListener('online',()=>{net();load()});addEventListener('offline',net);
 
-async function load(silent){
+async function load(){
   net();
-  let cached=store.get('cea_data');try{if(cached&&!JSON.parse(cached).pracas)cached=null}catch(_){cached=null}
-  if(!D){D=cached?JSON.parse(cached):FALLBACK; if(D)render()}
+  let cached=store.get('cea_data');try{cached=cached?JSON.parse(cached):null;if(cached&&!cached.pracas)cached=null}catch(_){cached=null}
+  if(!D){D=(cached&&FALLBACK&&cached.versao<FALLBACK.versao)?FALLBACK:(cached||FALLBACK);if(D)render()}
   try{
     const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});
     if(!r.ok)throw 0;
@@ -214,45 +254,55 @@ async function load(silent){
     if(!D||n.versao!==D.versao){const had=!!D;D=n;store.set('cea_data',JSON.stringify(n));render();if(had)toast('Informações atualizadas')}
   }catch(_){}
 }
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&D)load(true)});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&D)load()});
 
-const maps=a=>'https://maps.apple.com/?q='+encodeURIComponent(a+', São Paulo - SP');
-const gmaps=a=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a+', São Paulo - SP');
-const uber=a=>'https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]='+encodeURIComponent(a+', São Paulo - SP');
-const isApple=/iPhone|iPad|Mac/.test(navigator.userAgent);
+const city=', São Paulo - SP';
+const maps=a=>'https://maps.apple.com/?q='+encodeURIComponent(a+city);
+const gmaps=a=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a+city);
+const uber=a=>'https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]='+encodeURIComponent(a+city);
+const P=k=>(D.pessoas&&D.pessoas[k])||{nome:k,cor:'#111'};
+const who=k=>`<span class="pdot" style="background:${esc(P(k).cor)}"></span>${esc(k)}`;
 
-function render(){try{renderAll()}catch(e){console.error(e);if(D!==FALLBACK&&FALLBACK){D=FALLBACK;try{renderAll()}catch(_){}}}}
+function render(){try{renderAll()}catch(e){console.error(e);if(FALLBACK&&D!==FALLBACK){D=FALLBACK;try{renderAll()}catch(_){}}}}
 function renderAll(){
-  const p=D.pracas[0];
-  $('#psub').textContent=p.nome+' · '+p.periodo+' · '+p.resumo;
-  $('#notices').innerHTML=(D.avisos||[]).map(a=>'<div class="notice">'+esc(a)+'</div>').join('');
-  const today=todayStr();
-  const ti=p.dias.findIndex(d=>d.data===today); if(ti>=0&&!render.done)day=ti; render.done=1;
-  $('#days').innerHTML=p.dias.map((d,i)=>`<button type="button" role="tab" aria-selected="${i===day}" class="${i===day?'on':''}" data-i="${i}">${esc(d.titulo)}<small>${fmtDay(d.data)}</small></button>`).join('');
-  $('#days').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{day=+b.dataset.i;render()}));
+  const p=D.pracas[0], today=todayStr();
+  $('#psub').innerHTML=nb(p.nome+' · '+p.periodo+' · '+p.resumo);
+  $('#notices').innerHTML=(D.avisos||[]).map(a=>'<div class="notice">'+nb(a)+'</div>').join('');
+  if(!chosen){const ti=p.dias.findIndex(d=>d.data===today);if(ti>=0)day=ti}
+  if(day>=p.dias.length)day=0;
+  $('#days').innerHTML=p.dias.map((d,i)=>`<button type="button" role="tab" aria-selected="${i===day}" class="d${i%3} ${i===day?'on':''}" data-i="${i}">${esc(d.titulo)}<small>${fmtDay(d.data)}</small><span class="sw"></span></button>`).join('');
+  $('#days').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{day=+b.dataset.i;chosen=true;render()}));
   const d=p.dias[day];
-  $('#team').innerHTML=`<div><span>Moderação</span><strong>${esc(d.moderacao)}</strong></div><div><span>Acompanha</span><strong>${esc(d.acompanha)}</strong></div><div><span>Locomoção</span><strong>${esc(d.transporte)}</strong></div>`;
-  const nowIdx=(()=>{if(d.data!==today)return -1;const h=new Date().getHours();return h<13?0:2})();
+  $('#day').className='day d'+(day%3);
+  $('#team').innerHTML=`<div><span>Moderação</span><strong>${who(d.moderacao)}</strong></div><div><span>Acompanha</span><strong>${who(d.acompanha)}</strong></div><div><span>Locomoção</span><strong>${esc(d.transporte)}</strong></div>`;
+  const key=i=>d.data+'#'+i;
+  const total=d.visitas.length, feitos=d.visitas.filter((_,i)=>done[key(i)]).length;
+  $('#prog').innerHTML=`<span>${feitos} de ${total} visitas</span><span class="bar"><i style="width:${total?feitos/total*100:0}%"></i></span>`;
+  let nowIdx=-1;
+  if(d.data===today){nowIdx=d.visitas.findIndex((_,i)=>!done[key(i)])}
   $('#tl').innerHTML=d.visitas.map((v,i)=>{
-    const after=!/^\d/.test(v.hora), last=i===d.visitas.length-1;
+    const after=!/^\d/.test(v.hora), last=i===total-1, isDone=!!done[key(i)];
     return `<div class="v"><div class="rail"><div class="h ${after?'after':''}">${after?'depois':esc(v.hora)}</div>${last?'':'<div class="ln"></div>'}</div>
-    <div class="card ${v.tipo} ${i===nowIdx?'now':''}">
-      <div class="kind">${v.tipo==='casa'?I.home+'Etnografia em casa':I.bag+'Visita à loja'}${i===nowIdx?'<span class="tag">Agora</span>':''}</div>
-      <h3>${esc(v.nome)}</h3><p>${esc(v.endereco)}</p>
+    <div class="card ${v.tipo} ${i===nowIdx?'now':''} ${isDone?'done':''}">
+      <div class="chead"><div class="kind">${v.tipo==='casa'?I.home+'Etnografia em casa':I.bag+'Visita à loja'}${i===nowIdx?'<span class="tag">Agora</span>':''}</div>
+      <button type="button" class="chk" data-k="${esc(key(i))}" aria-pressed="${isDone}" aria-label="Marcar ${esc(v.nome)} como visitada">${I.tick}</button></div>
+      <h3>${nb(v.nome)}</h3><p>${nb(v.endereco)}</p>
       <div class="acts"><a class="btn" href="${isApple?maps(v.endereco):gmaps(v.endereco)}" target="_blank" rel="noopener">${I.pin}Mapa</a><a class="btn ghost" href="${uber(v.endereco)}" target="_blank" rel="noopener">${I.car}Uber</a></div>
     </div></div>`}).join('');
-  $('#manual').innerHTML='<h2 class="sec">Antes de entrar</h2>'+D.manual.map((m,i)=>`<details class="item" ${i===0?'open':''}><summary><span class="ic">${I[m.icone]||I.question}</span><b>${esc(m.titulo)}</b>${I.chev}</summary><div class="body">${m.texto.map(t=>'<p>'+esc(t)+'</p>').join('')}</div></details>`).join('');
-  $('#dd').innerHTML=`<div class="col do"><h4>Pode</h4><ul>${D.dos.map(t=>'<li>'+I.ok+esc(t)+'</li>').join('')}</ul></div><div class="col dont"><h4>Evite</h4><ul>${D.donts.map(t=>'<li>'+I.no+esc(t)+'</li>').join('')}</ul></div>`;
-  $('#cts').innerHTML=D.contatos.map(c=>{const ini=c.nome.split(' ').map(x=>x[0]).slice(0,2).join('');
-    return `<div class="ct"><div class="av">${esc(ini)}</div><div style="flex:1;min-width:0"><h3>${esc(c.nome)}</h3><p>${esc(c.papel)}</p>
+  $('#tl').querySelectorAll('.chk').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;if(done[k])delete done[k];else done[k]=1;store.set('cea_done',JSON.stringify(done));render()}));
+  $('#manual').innerHTML='<h2 class="sec first">Antes de&nbsp;entrar</h2>'+D.manual.map((m,i)=>`<details class="item" ${i===0?'open':''}><summary><span class="ic">${I[m.icone]||I.question}</span><b>${nb(m.titulo)}</b>${I.chev}</summary><div class="body">${m.texto.map(t=>'<p>'+nb(t)+'</p>').join('')}</div></details>`).join('');
+  $('#dd').innerHTML=`<div class="col do"><h4>Pode</h4><ul>${D.dos.map(t=>'<li>'+I.ok+'<span>'+nb(t)+'</span></li>').join('')}</ul></div><div class="col dont"><h4>Evite</h4><ul>${D.donts.map(t=>'<li>'+I.no+'<span>'+nb(t)+'</span></li>').join('')}</ul></div>`;
+  $('#cts').innerHTML=D.contatos.map(c=>{const ini=c.nome.split(' ').map(x=>x[0]).slice(0,2).join('');const cor=c.pessoa?P(c.pessoa).cor:'#111';
+    return `<div class="ct"><div class="av" style="background:${esc(cor)}">${esc(ini)}</div><div style="flex:1;min-width:0"><h3>${esc(c.nome)}</h3><p>${nb(c.papel)}</p>
     <div class="ln2">${esc(c.telFmt)}</div><div class="ln2" style="color:var(--ink2)">${esc(c.email)}</div>
-    <div class="acts">${c.tel?`<a class="btn" href="tel:${esc(c.tel)}">${I.phone}Ligar</a><a class="btn ghost" href="https://wa.me/${esc(c.tel.replace(/\D/g,''))}" target="_blank" rel="noopener">${I.wa}WhatsApp</a>`:''}<a class="btn ghost" href="mailto:${esc(c.email)}">${I.mail}E-mail</a></div></div></div>`}).join('');
+    <div class="acts">${c.tel?`<a class="btn" href="tel:${esc(c.tel)}">${I.phone}Ligar</a><a class="btn ghost" href="https://wa.me/${esc(c.tel.replace(/\D/g,''))}" target="_blank" rel="noopener">${I.wa}WhatsApp</a>`:''}<a class="btn ghost ico" href="mailto:${esc(c.email)}" aria-label="E-mail">${I.mail}</a></div></div></div>`}).join('');
+  $('#legend').innerHTML=Object.keys(D.pessoas||{}).map(k=>`<span><span class="pdot" style="background:${esc(P(k).cor)}"></span>${esc(k)} · ${esc(P(k).papel||'')}</span>`).join('');
   $('#ver').textContent='Atualizado em '+D.versao;
 }
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));
-  scrollTo({top:0,behavior:'smooth'});
+  $('#scroll').scrollTo({top:0,behavior:'smooth'});
 }));
 if(store.get('cea_ok')===HASH) unlock();
 if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
