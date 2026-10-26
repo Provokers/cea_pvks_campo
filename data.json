@@ -1,5 +1,5 @@
 {
-  "versao": "2026-10-26 18:10",
+  "versao": "2026-10-26 18:30",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
@@ -33,7 +33,7 @@
       },
       {
         "icone": "car",
-        "t": "Locomoção sugerida: Uber. Fique à vontade para ir como preferir. No botão Uber de cada card, o endereço já é copiado para você colar no app."
+        "t": "Locomoção sugerida: Uber, mas não é obrigatório."
       }
     ]
   },
@@ -221,7 +221,7 @@
         },
         {
           "icone": "hand",
-          "t": "Apresente-se só pelo primeiro nome, como parte da equipe da pesquisa. Por exemplo: “Oi, eu sou a Jade, estou acompanhando a conversa hoje.”"
+          "t": "Apresente-se só pelo primeiro nome, como parte da equipe da pesquisa. Por exemplo: “Oi, eu sou a Gabi, estou acompanhando a conversa hoje.”"
         },
         {
           "icone": "tagoff",
@@ -279,7 +279,7 @@
         },
         {
           "icone": "car",
-          "t": "A locomoção sugerida é o Uber, mas não é obrigatória. Vá como for mais prático para você, respeitando o horário de encontro. O botão Uber de cada card copia o endereço."
+          "t": "Locomoção sugerida: Uber, mas não é obrigatório. Respeite o horário de encontro."
         }
       ]
     },
