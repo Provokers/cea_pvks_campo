@@ -15,9 +15,9 @@
 <style>
 :root{--ink:#111;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e8e6e1;--bg:#fff;--soft:#f5f3ef;--beige:#e9e1d3;--r:18px;
 --f:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif}
-.d0{--tint:#f4ede1;--acc:#d9c9a8}
-.d1{--tint:#ece0cc;--acc:#bfa47a}
-.d2{--tint:#e2d1b5;--acc:#a3855a}
+.d0{--tint:#f1e8d8;--acc:#d2bf9a}
+.d1{--tint:#e7d8bf;--acc:#b89b6e}
+.d2{--tint:#dcc6a2;--acc:#9c7e52}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased;overflow:hidden}
 h1,h2,h3,h4,b,strong{text-wrap:balance}
@@ -52,7 +52,7 @@ h1.big b{font-weight:700}
 .seg button.on{color:var(--ink);background:var(--tint)}
 .seg button .sw{display:block;width:18px;height:3px;border-radius:2px;margin:6px auto 0;background:var(--acc)}
 .team{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.team div{background:var(--tint);border-radius:14px;padding:11px 12px;transition:background .25s}
+.team div{background:#fff;border:1.5px solid var(--tint);border-radius:14px;padding:10px 11px;transition:border-color .25s}
 .team span{display:block;font-size:12px;color:var(--ink2);margin-bottom:4px}
 .team strong{font-size:15px;font-weight:600;display:flex;align-items:center;gap:6px}
 .pdot{width:9px;height:9px;border-radius:50%;flex:none}
@@ -94,16 +94,26 @@ h1.big b{font-weight:700}
 .item summary b{font-size:16px;font-weight:600;flex:1}
 .chev{width:16px;height:16px;transition:transform .25s;color:var(--ink3);flex:none}
 .item[open] .chev{transform:rotate(90deg)}
-.item .body{padding:0 0 18px 54px;color:#3a3a3c;font-size:15px;line-height:1.5}
-.item .body p{margin:0 0 10px}
+.item .body{padding:0 0 16px 0;color:#3a3a3c;font-size:15px;line-height:1.5}
+.ins{display:flex;gap:14px;align-items:flex-start;padding:8px 0}
+.ins .mi{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;flex:none;color:var(--ink)}
+.ins .mi svg{width:19px;height:19px}
+.ins p{margin:0;padding-top:1px}
 .dd{display:grid;gap:10px}
 .dd .col{border-radius:var(--r);padding:18px}
 .dd .do{background:var(--soft)}
 .dd .dont{border:1px solid var(--line)}
 .dd h4{margin:0 0 10px;font-size:15px;font-weight:700}
 .dd ul{list-style:none;margin:0;padding:0}
-.dd li{display:flex;gap:10px;font-size:15px;line-height:1.4;padding:6px 0}
-.dd li svg{width:18px;height:18px;flex:none;margin-top:1px}
+.dd li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.4;padding:7px 0}
+.dd .li-ic{position:relative;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;background:#fff}
+.dd .dont .li-ic{background:var(--soft)}
+.dd .li-ic svg{width:17px;height:17px}
+.dd .li-ic i{position:absolute;right:-4px;bottom:-4px;width:15px;height:15px;border-radius:50%;display:grid;place-items:center;border:2px solid #fff}
+.dd .li-ic i svg{width:9px;height:9px}
+.dd .do .li-ic i{background:var(--ink)}
+.dd .dont .li-ic i{background:#9c7e52}
+.dd li span{padding-top:6px}
 .ct{border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start}
 .av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:16px;flex:none;color:#fff}
 .ct h3{margin:2px 0 2px;font-size:17px;font-weight:600}
@@ -122,6 +132,17 @@ nav button.on{color:var(--ink)}
 .view{display:none;animation:fade .25s ease}
 .view.on{display:block}
 @keyframes fade{from{opacity:0}to{opacity:1}}
+.sheet{position:fixed;inset:0;z-index:70;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet.show{opacity:1;pointer-events:auto}
+.sheet .pn{width:100%;max-width:560px;background:#fff;border-radius:22px 22px 0 0;padding:18px 16px calc(env(safe-area-inset-bottom) + 16px);transform:translateY(30px);transition:transform .25s}
+.sheet.show .pn{transform:none}
+.sheet h4{margin:4px 4px 4px;font-size:17px;font-weight:700}
+.sheet p{margin:0 4px 14px;font-size:13px;color:var(--ink2)}
+.sheet .opt{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border-radius:14px;background:var(--soft);margin-bottom:8px;font-size:16px;font-weight:500;text-align:left}
+.sheet .opt svg{width:20px;height:20px}
+.sheet .cancel{width:100%;padding:14px;font-size:16px;color:var(--ink2)}
+.pref{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-top:12px;font-size:15px}
+.pref small{display:block;color:var(--ink2);font-size:13px;margin-top:2px}
 .toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 12px);transform:translate(-50%,-80px);background:var(--ink);color:#fff;font-size:13px;padding:10px 16px;border-radius:99px;transition:transform .35s;z-index:60}
 .toast.show{transform:translate(-50%,0)}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
@@ -170,6 +191,7 @@ nav button.on{color:var(--ink)}
     <div id="cts"></div>
     <h2 class="sec">Equipe de&nbsp;campo</h2>
     <div class="legend" id="legend"></div>
+    <div id="prefBox"></div>
   </section>
   <div class="foot"><span id="ver"></span><img src="provokers.png" alt="Provokers"></div>
  </div></div>
@@ -179,12 +201,15 @@ nav button.on{color:var(--ink)}
   <button type="button" data-v="contatos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Contatos</button>
  </div></nav>
 </div>
+<div class="sheet" id="sheet" aria-hidden="true"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="shT">
+  <h4 id="shT">Abrir com</h4><p>Sua escolha fica salva. Dá para trocar depois na aba&nbsp;Contatos.</p>
+  <div id="shOpts"></div><button type="button" class="cancel" id="shX">Cancelar</button></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (()=>{
 const HASH='e350ef425bd36ffa4a5e58d7c13ac9ee509436eef3a5a4a493dc3e089de78820';
-const FALLBACK={"versao": "2026-10-26 16:50", "projeto": "P12264 · Estudo Armários do Brasil", "cliente": "C&A", "pessoas": {"Karin": {"nome": "Karin", "papel": "Moderação", "cor": "#B5694A"}, "Luna": {"nome": "Luna", "papel": "Moderação", "cor": "#6E8B74"}, "Gabi": {"nome": "Gabriela Sartoretto", "papel": "Acompanhamento", "cor": "#5F7FA3"}, "Gustavo": {"nome": "Gustavo Pelegrini", "papel": "Acompanhamento", "cor": "#8A6A8C"}}, "pracas": [{"id": "sp", "nome": "São Paulo", "cidade": "São Paulo - SP", "periodo": "28 a 30 de outubro de 2026", "resumo": "6 etnografias · 6 visitas a lojas", "dias": [{"data": "2026-10-28", "titulo": "Dia 1", "moderacao": "Karin", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Paula Regina B.", "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Tatuapé", "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"}, {"hora": "15:00", "tipo": "casa", "nome": "Paula S.", "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Itaquera", "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"}]}, {"data": "2026-10-29", "titulo": "Dia 2", "moderacao": "Karin", "acompanha": "Gustavo", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Rovesca J.", "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Morumbi", "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"}, {"hora": "15:00", "tipo": "casa", "nome": "Jozeane I.", "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Interlagos", "endereco": "Av. Interlagos, 2255 · Interlagos"}]}, {"data": "2026-10-30", "titulo": "Dia 3", "moderacao": "Luna", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Vivian C.", "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Av. Paulista / Centro (rua)", "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"}, {"hora": "15:00", "tipo": "casa", "nome": "Vitória S.", "endereco": "Av. Handu, 1361 · Planalto Paulista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Ibirapuera", "endereco": "Av. Ibirapuera, 3103 · Indianópolis"}]}]}], "manual": [{"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": ["Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes.", "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos.", "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": ["Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis.", "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": ["Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita.", "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho.", "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."]}], "dos": ["Cumprimentar e agradecer por estar nos recebendo", "Ser simpático e receptivo caso ela inicie uma conversa", "Demonstrar interesse de maneira natural, sem julgamentos", "Respeitar os espaços indicados pela entrevistada e pela equipe"], "donts": ["Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora", "Completar respostas ou dar exemplos que possam influenciar o que ela dirá", "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa", "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"], "contatos": [{"pessoa": "Gabi", "nome": "Gabriela Sartoretto", "papel": "Acompanhamento do cliente · ponto de contato principal em campo", "tel": "+5511950600210", "telFmt": "(11) 95060-0210", "email": "gabriela.sartoretto@provokers.com.br"}, {"pessoa": "Gustavo", "nome": "Gustavo Pelegrini", "papel": "Acompanhamento do cliente", "tel": "+5511982623956", "telFmt": "(11) 98262-3956", "email": "gustavo.pelegrini@provokers.com.br"}], "avisos": []};
+const FALLBACK={"versao": "2026-10-26 17:20", "projeto": "P12264 · Estudo Armários do Brasil", "cliente": "C&A", "pessoas": {"Karin": {"nome": "Karin", "papel": "Moderação", "cor": "#B5694A"}, "Luna": {"nome": "Luna", "papel": "Moderação", "cor": "#6E8B74"}, "Gabi": {"nome": "Gabriela Sartoretto", "papel": "Acompanhamento", "cor": "#5F7FA3"}, "Gustavo": {"nome": "Gustavo Pelegrini", "papel": "Acompanhamento", "cor": "#8A6A8C"}}, "pracas": [{"id": "sp", "nome": "São Paulo", "cidade": "São Paulo - SP", "periodo": "28 a 30 de outubro de 2026", "resumo": "6 etnografias · 6 visitas a lojas", "dias": [{"data": "2026-10-28", "titulo": "Dia 1", "moderacao": "Karin", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Paula Regina B.", "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Tatuapé", "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"}, {"hora": "15:00", "tipo": "casa", "nome": "Paula S.", "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Metrô Itaquera", "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"}]}, {"data": "2026-10-29", "titulo": "Dia 2", "moderacao": "Karin", "acompanha": "Gustavo", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Rovesca J.", "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Morumbi", "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"}, {"hora": "15:00", "tipo": "casa", "nome": "Jozeane I.", "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Interlagos", "endereco": "Av. Interlagos, 2255 · Interlagos"}]}, {"data": "2026-10-30", "titulo": "Dia 3", "moderacao": "Luna", "acompanha": "Gabi", "transporte": "Uber", "visitas": [{"hora": "09:00", "tipo": "casa", "nome": "Vivian C.", "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Av. Paulista / Centro (rua)", "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"}, {"hora": "15:00", "tipo": "casa", "nome": "Vitória S.", "endereco": "Av. Handu, 1361 · Planalto Paulista"}, {"hora": "Após a casa", "tipo": "loja", "nome": "C&A Shopping Ibirapuera", "endereco": "Av. Ibirapuera, 3103 · Indianópolis"}]}]}], "manual": [{"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": [{"icone": "people", "t": "Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes."}, {"icone": "heart", "t": "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos."}, {"icone": "mute", "t": "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."}]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": [{"icone": "shirt", "t": "Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis."}, {"icone": "sparkle", "t": "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."}]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": [{"icone": "note", "t": "Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita."}, {"icone": "route", "t": "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho."}, {"icone": "whisper", "t": "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."}]}], "dos": [{"icone": "hand", "t": "Cumprimentar e agradecer por estar nos recebendo"}, {"icone": "smile", "t": "Ser simpático e receptivo caso ela inicie uma conversa"}, {"icone": "eye", "t": "Demonstrar interesse de maneira natural, sem julgamentos"}, {"icone": "door", "t": "Respeitar os espaços indicados pela entrevistada e pela equipe"}], "donts": [{"icone": "route", "t": "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora"}, {"icone": "bubble", "t": "Completar respostas ou dar exemplos que possam influenciar o que ela dirá"}, {"icone": "user", "t": "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa"}, {"icone": "camera", "t": "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"}], "contatos": [{"pessoa": "Gabi", "nome": "Gabriela Sartoretto", "papel": "Acompanhamento do cliente · ponto de contato principal em campo", "tel": "+5511950600210", "telFmt": "(11) 95060-0210", "email": "gabriela.sartoretto@provokers.com.br"}, {"pessoa": "Gustavo", "nome": "Gustavo Pelegrini", "papel": "Acompanhamento do cliente", "tel": "+5511982623956", "telFmt": "(11) 98262-3956", "email": "gustavo.pelegrini@provokers.com.br"}], "avisos": []};
 const store={get:k=>{try{return window.localStorage.getItem(k)}catch(_){return null}},set:(k,v)=>{try{window.localStorage.setItem(k,v)}catch(_){}}};
 const WD=['dom','seg','ter','qua','qui','sex','sáb'];
 const fmtDay=s=>{const [y,m,d]=String(s).split('-').map(Number);if(!y)return '';return WD[new Date(y,m-1,d).getDay()]+', '+String(d).padStart(2,'0')+'/'+String(m).padStart(2,'0')};
@@ -209,6 +234,23 @@ const I={
  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.7 6.7l1.3-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5.5a2 2 0 0 1 2-2z"/></svg>',
  wa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>',
  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>',
+ people:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6"/><circle cx="17" cy="9.5" r="2.4"/><path d="M16 14.6c2.4-.2 4 1.2 4.5 3.9"/></svg>',
+ heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19.5s-7.5-4.4-7.5-10a4.2 4.2 0 0 1 7.5-2.6A4.2 4.2 0 0 1 19.5 9.5c0 5.6-7.5 10-7.5 10z"/></svg>',
+ mute:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4.5 6.5h15v9.5H10l-4 3.5V16H4.5z"/><path d="M9.5 11.2h5"/></svg>',
+ sparkle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3.5l1.8 5 5 1.8-5 1.8-1.8 5-1.8-5-5-1.8 5-1.8z"/><path d="M18.5 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>',
+ note:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4"/></svg>',
+ route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="5.5" r="2"/><circle cx="18" cy="18.5" r="2"/><path d="M8 5.5h7.5a3.5 3.5 0 0 1 0 7h-7a3.5 3.5 0 0 0 0 7H16"/></svg>',
+ whisper:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4.5 5.5h11v8H9.5l-3.5 3v-3H4.5z"/><path d="M18.5 9.5h1v8h-1.5v2.5l-3-2.5H11"/></svg>',
+ hand:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M8 11V5.5a1.5 1.5 0 0 1 3 0V10M11 10V4.5a1.5 1.5 0 0 1 3 0V10M14 10V6a1.5 1.5 0 0 1 3 0v7.5a6.5 6.5 0 0 1-6.5 6.5c-2.2 0-3.6-1-4.8-2.6L3.6 14a1.5 1.5 0 0 1 2.3-1.9L8 14"/></svg>',
+ smile:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 14c.9 1.4 2.1 2 3.5 2s2.6-.6 3.5-2"/><path d="M9 9.5v.5M15 9.5v.5"/></svg>',
+ eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+ door:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 20.5V4.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16"/><path d="M3.5 20.5h17"/><circle cx="14.5" cy="12.5" r=".8" fill="currentColor"/></svg>',
+ bubble:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4.5 5.5h15v10h-9l-4 3.5v-3.5h-2z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01" stroke-width="2.4" stroke-linecap="round"/></svg>',
+ user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>',
+ camera:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 8.5a1.5 1.5 0 0 1 1.5-1.5h2.3L9.3 5h5.4l1.5 2h2.3A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><circle cx="12" cy="12.8" r="3.3"/></svg>',
+ copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg>',
+ mini_ok:'<svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.3l2 2 4-4.6"/></svg>',
+ mini_no:'<svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M3.8 3.8l4.4 4.4M8.2 3.8L3.8 8.2"/></svg>',
  chev:'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>',
  tick:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4 8-9"/></svg>',
  ok:'<svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16 9.5"/></svg>',
@@ -244,25 +286,47 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&D)load()}
 /* endereço limpo para mapas e Uber: troca "·" por vírgula, usa a 1ª opção quando há "ou", soma a cidade */
 function addr(v){const c=(D.pracas[0].cidade||'São Paulo - SP');return String(v.endereco).split(/\s+ou\s+/i)[0].replace(/\s*·\s*/g,', ')+', '+c}
 const hasGeo=v=>typeof v.lat==='number'&&typeof v.lng==='number';
-function mapsUrl(v){
+const MAPAPPS={
+  apple:{n:'Apple Maps',u:(v,a)=>hasGeo(v)?`maps://?ll=${v.lat},${v.lng}&q=${encodeURIComponent(v.nome)}`:`maps://?q=${a}`},
+  google:{n:'Google Maps',u:(v,a)=>hasGeo(v)?`comgooglemaps://?q=${v.lat},${v.lng}`:`comgooglemaps://?q=${a}`},
+  waze:{n:'Waze',u:(v,a)=>hasGeo(v)?`waze://?ll=${v.lat},${v.lng}&navigate=yes`:`waze://?q=${a}&navigate=yes`}
+};
+function mapsUrl(v,app){
   const a=encodeURIComponent(addr(v));
-  if(IOS) return hasGeo(v)?`https://maps.apple.com/?ll=${v.lat},${v.lng}&q=${encodeURIComponent(v.nome)}`:`https://maps.apple.com/?q=${a}`;
+  if(IOS) return MAPAPPS[app||'apple'].u(v,a);
   if(ANDROID) return hasGeo(v)?`geo:${v.lat},${v.lng}?q=${v.lat},${v.lng}(${encodeURIComponent(v.nome)})`:`geo:0,0?q=${a}`;
   return `https://www.google.com/maps/search/?api=1&query=${a}`;
 }
-function uberParams(v){
-  const p=['action=setPickup','pickup=my_location','dropoff[formatted_address]='+encodeURIComponent(addr(v)),'dropoff[nickname]='+encodeURIComponent(v.nome)];
-  if(hasGeo(v))p.push('dropoff[latitude]='+v.lat,'dropoff[longitude]='+v.lng);
-  return p.join('&');
+function openMap(v){
+  if(!IOS){const u=mapsUrl(v);if(ANDROID)location.href=u;else window.open(u,'_blank','noopener');return}
+  const pref=store.get('cea_maps');
+  if(pref&&MAPAPPS[pref]){location.href=mapsUrl(v,pref);return}
+  showSheet(k=>{store.set('cea_maps',k);renderPref();location.href=mapsUrl(v,k)});
 }
-function openUber(v){
-  const q=uberParams(v), web='https://m.uber.com/ul/?'+q;
-  if(!(IOS||ANDROID)){window.open(web,'_blank','noopener');return}
-  // tenta o app; se não estiver instalado, cai no link universal
-  let left=false;const onHide=()=>{left=true};
-  document.addEventListener('visibilitychange',onHide,{once:true});
-  location.href='uber://?'+q;
-  setTimeout(()=>{if(!left&&!document.hidden)location.href=web},1400);
+let sheetCb=null;
+function showSheet(cb){sheetCb=cb;
+  $('#shOpts').innerHTML=Object.keys(MAPAPPS).map(k=>`<button type="button" class="opt" data-k="${k}">${I.pin}${MAPAPPS[k].n}</button>`).join('');
+  $('#shOpts').querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;hideSheet();if(sheetCb)sheetCb(k)}));
+  const s=$('#sheet');s.classList.add('show');s.setAttribute('aria-hidden','false');}
+function hideSheet(){const s=$('#sheet');s.classList.remove('show');s.setAttribute('aria-hidden','true')}
+$('#shX').addEventListener('click',hideSheet);
+$('#sheet').addEventListener('click',e=>{if(e.target.id==='sheet')hideSheet()});
+function renderPref(){
+  const box=$('#prefBox');if(!box)return;
+  if(!IOS){box.innerHTML='';return}
+  const k=store.get('cea_maps');
+  box.innerHTML=`<div class="pref"><div>App de mapas<small>${k&&MAPAPPS[k]?MAPAPPS[k].n:'Perguntar na primeira vez'}</small></div><button type="button" class="btn ghost" id="prefBtn">Trocar</button></div>`;
+  $('#prefBtn').addEventListener('click',()=>showSheet(x=>{store.set('cea_maps',x);renderPref();toast(MAPAPPS[x].n+' definido')}));
+}
+async function copyText(s){
+  try{await navigator.clipboard.writeText(s);return true}catch(_){}
+  try{const ta=document.createElement('textarea');ta.value=s;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:-100px;opacity:0';document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,s.length);const ok=document.execCommand('copy');ta.remove();return ok}catch(_){return false}
+}
+async function openUber(v){
+  const s=addr(v);
+  const ok=await copyText(s);
+  toast(ok?'Endereço copiado. Cole no destino do Uber':'Não deu para copiar. Endereço: '+s);
+  if(IOS||ANDROID) setTimeout(()=>{location.href='uber://'},ok?700:2200);
 }
 const P=k=>(D.pessoas&&D.pessoas[k])||{nome:k,cor:'#111'};
 const who=k=>`<span class="pdot" style="background:${esc(P(k).cor)}"></span>${esc(k)}`;
@@ -290,18 +354,20 @@ function renderAll(){
       <div class="chead"><div class="kind">${v.tipo==='casa'?I.home+'Etnografia em casa':I.bag+'Visita à loja'}${i===nowIdx?'<span class="tag">Agora</span>':''}</div>
       <button type="button" class="chk" data-k="${esc(key(i))}" aria-pressed="${isDone}" aria-label="Marcar ${esc(v.nome)} como visitada">${I.tick}</button></div>
       <h3>${nb(v.nome)}</h3><p>${nb(v.endereco)}</p>
-      <div class="acts"><a class="btn" href="${esc(mapsUrl(v))}" ${IOS||ANDROID?'':'target="_blank" rel="noopener"'}>${I.pin}Mapa</a><button type="button" class="btn ghost uber" data-i="${i}">${I.car}Uber</button></div>
+      <div class="acts"><button type="button" class="btn map" data-i="${i}">${I.pin}Mapa</button><button type="button" class="btn ghost uber" data-i="${i}" aria-label="Copiar endereço e abrir o Uber">${I.copy}Uber</button></div>
     </div></div>`}).join('');
   $('#tl').querySelectorAll('.chk').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;if(done[k])delete done[k];else done[k]=1;store.set('cea_done',JSON.stringify(done));render()}));
+  $('#tl').querySelectorAll('.map').forEach(b=>b.addEventListener('click',()=>openMap(CUR[+b.dataset.i])));
   $('#tl').querySelectorAll('.uber').forEach(b=>b.addEventListener('click',()=>openUber(CUR[+b.dataset.i])));
-  $('#manual').innerHTML='<h2 class="sec first">Antes de&nbsp;entrar</h2>'+D.manual.map((m,i)=>`<details class="item" ${i===0?'open':''}><summary><span class="ic">${I[m.icone]||I.question}</span><b>${nb(m.titulo)}</b>${I.chev}</summary><div class="body">${m.texto.map(t=>'<p>'+nb(t)+'</p>').join('')}</div></details>`).join('');
-  $('#dd').innerHTML=`<div class="col do"><h4>Pode</h4><ul>${D.dos.map(t=>'<li>'+I.ok+'<span>'+nb(t)+'</span></li>').join('')}</ul></div><div class="col dont"><h4>Evite</h4><ul>${D.donts.map(t=>'<li>'+I.no+'<span>'+nb(t)+'</span></li>').join('')}</ul></div>`;
+  $('#manual').innerHTML='<h2 class="sec first">Antes de&nbsp;entrar</h2>'+D.manual.map((m,i)=>`<details class="item" ${i===0?'open':''}><summary><span class="ic">${I[m.icone]||I.question}</span><b>${nb(m.titulo)}</b>${I.chev}</summary><div class="body">${m.texto.map(x=>{const o=typeof x==='string'?{t:x}:x;return `<div class="ins"><span class="mi">${I[o.icone]||I[m.icone]||I.question}</span><p>${nb(o.t)}</p></div>`}).join('')}</div></details>`).join('');
+  $('#dd').innerHTML=`<div class="col do"><h4>Pode</h4><ul>${D.dos.map(x=>{const o=typeof x==='string'?{t:x}:x;return `<li><span class="li-ic">${I[o.icone]||I.ok}<i>${I.mini_ok}</i></span><span>${nb(o.t)}</span></li>`}).join('')}</ul></div><div class="col dont"><h4>Evite</h4><ul>${D.donts.map(x=>{const o=typeof x==='string'?{t:x}:x;return `<li><span class="li-ic">${I[o.icone]||I.no}<i>${I.mini_no}</i></span><span>${nb(o.t)}</span></li>`}).join('')}</ul></div>`;
   $('#cts').innerHTML=D.contatos.map(c=>{const ini=c.nome.split(' ').map(x=>x[0]).slice(0,2).join('');const cor=c.pessoa?P(c.pessoa).cor:'#111';
     return `<div class="ct"><div class="av" style="background:${esc(cor)}">${esc(ini)}</div><div style="flex:1;min-width:0"><h3>${esc(c.nome)}</h3><p>${nb(c.papel)}</p>
     <div class="ln2">${esc(c.telFmt)}</div><div class="ln2" style="color:var(--ink2)">${esc(c.email)}</div>
     <div class="acts">${c.tel?`<a class="btn" href="tel:${esc(c.tel)}">${I.phone}Ligar</a><a class="btn ghost" href="https://wa.me/${esc(c.tel.replace(/\D/g,''))}" target="_blank" rel="noopener">${I.wa}WhatsApp</a>`:''}<a class="btn ghost ico" href="mailto:${esc(c.email)}" aria-label="E-mail">${I.mail}</a></div></div></div>`}).join('');
   $('#legend').innerHTML=Object.keys(D.pessoas||{}).map(k=>`<span><span class="pdot" style="background:${esc(P(k).cor)}"></span>${esc(k)} · ${esc(P(k).papel||'')}</span>`).join('');
   $('#ver').textContent='Atualizado em '+D.versao;
+  renderPref();
 }
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));

@@ -1,5 +1,5 @@
 {
-  "versao": "2026-10-26 16:50",
+  "versao": "2026-10-26 17:20",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
@@ -139,40 +139,88 @@
       "icone": "home",
       "titulo": "Estamos entrando na casa de alguém",
       "texto": [
-        "Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes.",
-        "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos.",
-        "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."
+        {
+          "icone": "people",
+          "t": "Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes."
+        },
+        {
+          "icone": "heart",
+          "t": "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos."
+        },
+        {
+          "icone": "mute",
+          "t": "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."
+        }
       ]
     },
     {
       "icone": "shirt",
       "titulo": "Como me vestir",
       "texto": [
-        "Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis.",
-        "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."
+        {
+          "icone": "shirt",
+          "t": "Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis."
+        },
+        {
+          "icone": "sparkle",
+          "t": "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."
+        }
       ]
     },
     {
       "icone": "question",
       "titulo": "Tenho uma pergunta. Posso fazer?",
       "texto": [
-        "Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita.",
-        "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho.",
-        "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."
+        {
+          "icone": "note",
+          "t": "Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita."
+        },
+        {
+          "icone": "route",
+          "t": "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho."
+        },
+        {
+          "icone": "whisper",
+          "t": "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."
+        }
       ]
     }
   ],
   "dos": [
-    "Cumprimentar e agradecer por estar nos recebendo",
-    "Ser simpático e receptivo caso ela inicie uma conversa",
-    "Demonstrar interesse de maneira natural, sem julgamentos",
-    "Respeitar os espaços indicados pela entrevistada e pela equipe"
+    {
+      "icone": "hand",
+      "t": "Cumprimentar e agradecer por estar nos recebendo"
+    },
+    {
+      "icone": "smile",
+      "t": "Ser simpático e receptivo caso ela inicie uma conversa"
+    },
+    {
+      "icone": "eye",
+      "t": "Demonstrar interesse de maneira natural, sem julgamentos"
+    },
+    {
+      "icone": "door",
+      "t": "Respeitar os espaços indicados pela entrevistada e pela equipe"
+    }
   ],
   "donts": [
-    "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora",
-    "Completar respostas ou dar exemplos que possam influenciar o que ela dirá",
-    "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa",
-    "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"
+    {
+      "icone": "route",
+      "t": "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora"
+    },
+    {
+      "icone": "bubble",
+      "t": "Completar respostas ou dar exemplos que possam influenciar o que ela dirá"
+    },
+    {
+      "icone": "user",
+      "t": "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa"
+    },
+    {
+      "icone": "camera",
+      "t": "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"
+    }
   ],
   "contatos": [
     {
