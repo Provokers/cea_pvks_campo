@@ -1,28 +1,41 @@
 {
-  "versao": "2026-10-26 17:20",
+  "versao": "2026-10-26 18:10",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
     "Karin": {
-      "nome": "Karin",
       "papel": "Moderação",
       "cor": "#B5694A"
     },
     "Luna": {
-      "nome": "Luna",
       "papel": "Moderação",
       "cor": "#6E8B74"
     },
     "Gabi": {
-      "nome": "Gabriela Sartoretto",
       "papel": "Acompanhamento",
       "cor": "#5F7FA3"
     },
     "Gustavo": {
-      "nome": "Gustavo Pelegrini",
       "papel": "Acompanhamento",
       "cor": "#8A6A8C"
     }
+  },
+  "encontro": {
+    "titulo": "Como funciona o dia",
+    "itens": [
+      {
+        "icone": "pin",
+        "t": "Ponto de encontro principal: em frente à casa da entrevistada, 10 minutos antes do horário marcado."
+      },
+      {
+        "icone": "bag",
+        "t": "Depois da casa, cada um segue para o shopping e a equipe se reencontra lá para a 2ª parte da visita."
+      },
+      {
+        "icone": "car",
+        "t": "Locomoção sugerida: Uber. Fique à vontade para ir como preferir. No botão Uber de cada card, o endereço já é copiado para você colar no app."
+      }
+    ]
   },
   "pracas": [
     {
@@ -35,99 +48,162 @@
         {
           "data": "2026-10-28",
           "titulo": "Dia 1",
-          "moderacao": "Karin",
-          "acompanha": "Gabi",
-          "transporte": "Uber",
           "visitas": [
             {
-              "hora": "09:00",
-              "tipo": "casa",
-              "nome": "Paula Regina B.",
-              "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"
+              "bloco": "Visita 1",
+              "janela": "9h às 13h",
+              "provokers": [
+                "Karin",
+                "Gabi"
+              ],
+              "cea": [
+                "Jade",
+                "Maria Bia",
+                "Raissa Mantovani"
+              ],
+              "casa": {
+                "hora": "09:00",
+                "nome": "Paula Regina B.",
+                "idade": 37,
+                "classe": "B2",
+                "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"
+              },
+              "loja": {
+                "nome": "C&A Shopping Metrô Tatuapé",
+                "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"
+              }
             },
             {
-              "hora": "Após a casa",
-              "tipo": "loja",
-              "nome": "C&A Shopping Metrô Tatuapé",
-              "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"
-            },
-            {
-              "hora": "15:00",
-              "tipo": "casa",
-              "nome": "Paula S.",
-              "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"
-            },
-            {
-              "hora": "Após a casa",
-              "tipo": "loja",
-              "nome": "C&A Shopping Metrô Itaquera",
-              "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"
+              "bloco": "Visita 2",
+              "janela": "15h às 19h",
+              "provokers": [
+                "Karin",
+                "Gabi"
+              ],
+              "cea": [
+                "Renata",
+                "Jade",
+                "Melina"
+              ],
+              "casa": {
+                "hora": "15:00",
+                "nome": "Paula S.",
+                "idade": 39,
+                "classe": "C2",
+                "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"
+              },
+              "loja": {
+                "nome": "C&A Shopping Metrô Itaquera",
+                "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"
+              }
             }
           ]
         },
         {
           "data": "2026-10-29",
           "titulo": "Dia 2",
-          "moderacao": "Karin",
-          "acompanha": "Gustavo",
-          "transporte": "Uber",
           "visitas": [
             {
-              "hora": "09:00",
-              "tipo": "casa",
-              "nome": "Rovesca J.",
-              "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"
+              "bloco": "Visita 1",
+              "janela": "9h às 13h",
+              "provokers": [
+                "Karin",
+                "Gustavo"
+              ],
+              "cea": [
+                "Kelly",
+                "Cecilia",
+                "Talita Matsubara"
+              ],
+              "casa": {
+                "hora": "09:00",
+                "nome": "Rovesca J.",
+                "idade": 39,
+                "classe": "A",
+                "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"
+              },
+              "loja": {
+                "nome": "C&A Shopping Morumbi",
+                "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"
+              }
             },
             {
-              "hora": "Após a casa",
-              "tipo": "loja",
-              "nome": "C&A Shopping Morumbi",
-              "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"
-            },
-            {
-              "hora": "15:00",
-              "tipo": "casa",
-              "nome": "Jozeane I.",
-              "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"
-            },
-            {
-              "hora": "Após a casa",
-              "tipo": "loja",
-              "nome": "C&A Shopping Interlagos",
-              "endereco": "Av. Interlagos, 2255 · Interlagos"
+              "bloco": "Visita 2",
+              "janela": "15h às 19h",
+              "provokers": [
+                "Karin",
+                "Gustavo"
+              ],
+              "cea": [
+                "Kelly",
+                "Maria Eduarda",
+                "Dani Pallerosi"
+              ],
+              "casa": {
+                "hora": "15:00",
+                "nome": "Jozeane I.",
+                "idade": 45,
+                "classe": "C1",
+                "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"
+              },
+              "loja": {
+                "nome": "C&A Shopping Interlagos",
+                "endereco": "Av. Interlagos, 2255 · Interlagos"
+              }
             }
           ]
         },
         {
           "data": "2026-10-30",
           "titulo": "Dia 3",
-          "moderacao": "Luna",
-          "acompanha": "Gabi",
-          "transporte": "Uber",
           "visitas": [
             {
-              "hora": "09:00",
-              "tipo": "casa",
-              "nome": "Vivian C.",
-              "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"
+              "bloco": "Visita 1",
+              "janela": "9h às 13h",
+              "provokers": [
+                "Luna",
+                "Gabi"
+              ],
+              "cea": [
+                "Renata",
+                "Flavia",
+                "Clarissa"
+              ],
+              "casa": {
+                "hora": "09:00",
+                "nome": "Vivian C.",
+                "idade": 39,
+                "classe": "A",
+                "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"
+              },
+              "loja": {
+                "nome": "C&A Av. Paulista / Centro (rua)",
+                "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"
+              }
             },
             {
-              "hora": "Após a casa",
-              "tipo": "loja",
-              "nome": "C&A Av. Paulista / Centro (rua)",
-              "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"
-            },
-            {
-              "hora": "15:00",
-              "tipo": "casa",
-              "nome": "Vitória S.",
-              "endereco": "Av. Handu, 1361 · Planalto Paulista"
-            },
-            {
-              "hora": "Após a casa",
-              "tipo": "loja",
-              "nome": "C&A Shopping Ibirapuera",
-              "endereco": "Av. Ibirapuera, 3103 · Indianópolis"
+              "bloco": "Visita 2",
+              "janela": "15h às 19h",
+              "provokers": [
+                "Luna",
+                "Gabi"
+              ],
+              "cea": [
+                "Jade",
+                "Marcele",
+                "Larissa"
+              ],
+              "casa": {
+                "hora": "15:00",
+                "nome": "Vitória S.",
+                "idade": 21,
+                "classe": "B1",
+                "endereco": "Av. Handu, 1361 · Planalto Paulista"
+              },
+              "loja": {
+                "nome": "C&A Shopping Ibirapuera",
+                "endereco": "Av. Ibirapuera, 3103 · Indianópolis"
+              }
             }
           ]
         }
@@ -135,6 +211,28 @@
     }
   ],
   "manual": [
+    {
+      "icone": "user",
+      "titulo": "Como se apresentar",
+      "texto": [
+        {
+          "icone": "mask",
+          "t": "As entrevistadas não sabem que a pesquisa é da C&A. Assim as respostas sobre marcas e lojas ficam espontâneas."
+        },
+        {
+          "icone": "hand",
+          "t": "Apresente-se só pelo primeiro nome, como parte da equipe da pesquisa. Por exemplo: “Oi, eu sou a Jade, estou acompanhando a conversa hoje.”"
+        },
+        {
+          "icone": "tagoff",
+          "t": "Não mencione C&A, cargo ou área. Evite crachás, sacolas, roupas ou objetos com a marca."
+        },
+        {
+          "icone": "bubble",
+          "t": "Se ela perguntar quem está por trás do estudo, diga que é uma pesquisa sobre moda e guarda-roupa e deixe a moderadora conduzir a resposta."
+        }
+      ]
+    },
     {
       "icone": "home",
       "titulo": "Estamos entrando na casa de alguém",
@@ -164,6 +262,24 @@
         {
           "icone": "sparkle",
           "t": "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."
+        }
+      ]
+    },
+    {
+      "icone": "car",
+      "titulo": "Locomoção e pontos de encontro",
+      "texto": [
+        {
+          "icone": "pin",
+          "t": "Chegue 10 minutos antes do horário e espere a equipe em frente à casa da entrevistada. Esse é o ponto de encontro principal."
+        },
+        {
+          "icone": "bag",
+          "t": "Depois da casa, a equipe se reencontra no shopping para a 2ª parte da visita."
+        },
+        {
+          "icone": "car",
+          "t": "A locomoção sugerida é o Uber, mas não é obrigatória. Vá como for mais prático para você, respeitando o horário de encontro. O botão Uber de cada card copia o endereço."
         }
       ]
     },
@@ -206,6 +322,10 @@
   ],
   "donts": [
     {
+      "icone": "tagoff",
+      "t": "Dizer que é da C&A ou usar algo com a marca"
+    },
+    {
       "icone": "route",
       "t": "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora"
     },
@@ -238,6 +358,14 @@
       "tel": "+5511982623956",
       "telFmt": "(11) 98262-3956",
       "email": "gustavo.pelegrini@provokers.com.br"
+    },
+    {
+      "pessoa": "",
+      "nome": "Renata Marques",
+      "papel": "C&A",
+      "tel": "+5511995263353",
+      "telFmt": "(11) 99526-3353",
+      "email": "renata.marques@cea.com.br"
     }
   ],
   "avisos": []

@@ -6,6 +6,7 @@
 
 ## Atualizar informações
 Edite apenas `data.json` e altere o campo `versao`. Quem abrir com internet recebe na hora; offline, vale a última versão salva.
+Cada dia tem duas visitas (Visita 1 e Visita 2), cada uma com equipe Provokers (`provokers`), equipe C&A (`cea`), casa e loja.
 Aviso no topo da agenda: `"avisos": ["Visita das 15h atrasada 30 min"]`.
 
 ## Mapa e Uber
