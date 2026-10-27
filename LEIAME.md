@@ -6,11 +6,12 @@
 
 ## Atualizar informações
 Edite apenas `data.json` e altere o campo `versao`. Quem abrir com internet recebe na hora; offline, vale a última versão salva.
-Cada dia tem duas visitas (Visita 1 e Visita 2), cada uma com equipe Provokers (`provokers`), equipe C&A (`cea`), casa e loja.
+Cada dia tem Visita 1 e Visita 2, cada uma com equipe Provokers (`provokers`), equipe C&A (`cea`), casa e loja.
+Observações de acesso da casa (portaria, entrada, referência) vão no campo `obs` da casa.
 Aviso no topo da agenda: `"avisos": ["Visita das 15h atrasada 30 min"]`.
 
 ## Mapa e Uber
-Mapa: no Android abre o app de mapas padrão. No iPhone, na primeira vez a pessoa escolhe entre Apple Maps, Google Maps e Waze; a escolha fica salva e pode ser trocada na aba Contatos.
+Mapa: no Android abre o app de mapas padrão. No iPhone, na primeira vez a pessoa escolhe entre Apple Maps, Google Maps e Waze; a escolha fica salva e pode ser trocada na aba Equipe.
 Uber: o botão copia o endereço e abre o app do Uber. É só colar no campo de destino.
 
 ## Senha

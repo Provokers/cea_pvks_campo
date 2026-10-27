@@ -1,5 +1,5 @@
 {
-  "versao": "2026-10-26 19:00",
+  "versao": "2026-10-27 15:30",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
@@ -63,10 +63,11 @@
               ],
               "casa": {
                 "hora": "09:00",
-                "nome": "Paula Regina B.",
-                "idade": 37,
+                "nome": "Mariana S.",
+                "idade": 33,
                 "classe": "B2",
-                "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"
+                "endereco": "Rua Brigadeiro Morais, 91, ap. 908",
+                "obs": "Entrada de moradores, nos fundos. Referência: Estação Belém do Metrô"
               },
               "loja": {
                 "nome": "C&A Shopping Metrô Tatuapé",
@@ -82,8 +83,8 @@
               ],
               "cea": [
                 "Renata",
-                "Jade",
-                "Melina"
+                "Melina",
+                "Laureen"
               ],
               "casa": {
                 "hora": "15:00",
@@ -113,7 +114,8 @@
               "cea": [
                 "Kelly",
                 "Cecilia",
-                "Talita Matsubara"
+                "Talita Matsubara",
+                "Luara"
               ],
               "casa": {
                 "hora": "09:00",
@@ -344,6 +346,14 @@
   ],
   "contatos": [
     {
+      "pessoa": "",
+      "nome": "Renata Marques",
+      "papel": "C&A",
+      "tel": "+5511995263353",
+      "telFmt": "(11) 99526-3353",
+      "email": "renata.marques@cea.com.br"
+    },
+    {
       "pessoa": "Gabi",
       "nome": "Gabriela Sartoretto",
       "papel": "Acompanhamento do cliente · ponto de contato principal em campo",
@@ -358,14 +368,6 @@
       "tel": "+5511982623956",
       "telFmt": "(11) 98262-3956",
       "email": "gustavo.pelegrini@provokers.com.br"
-    },
-    {
-      "pessoa": "",
-      "nome": "Renata Marques",
-      "papel": "C&A",
-      "tel": "+5511995263353",
-      "telFmt": "(11) 99526-3353",
-      "email": "renata.marques@cea.com.br"
     }
   ],
   "avisos": []

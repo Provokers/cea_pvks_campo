@@ -14,7 +14,7 @@
 <title>C&A Campo · Provokers</title>
 <style>
 :root{--ink:#111;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e8e6e1;--bg:#fff;--soft:#f5f3ef;--beige:#e9e1d3;--r:18px;
---f:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif}
+--f:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,sans-serif}
 .d0{--tint:#f1e8d8;--acc:#d2bf9a}
 .d1{--tint:#e7d8bf;--acc:#b89b6e}
 .d2{--tint:#dcc6a2;--acc:#9c7e52}
@@ -45,7 +45,6 @@ a{color:inherit;text-decoration:none}
 h1.big{font-weight:300;font-size:40px;line-height:1.02;letter-spacing:-.03em;margin:8px 0 8px}
 h1.big b{font-weight:700}
 .sub{color:var(--ink2);font-size:15px;line-height:1.4;margin:0 0 20px}
-/* como funciona o dia */
 .how{border:1px solid var(--line);border-radius:var(--r);margin-bottom:20px}
 .how summary{list-style:none;display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;font-size:15px;font-weight:600}
 .how summary::-webkit-details-marker{display:none}
@@ -53,18 +52,14 @@ h1.big b{font-weight:700}
 .how summary span.t{flex:1}
 .how .body{padding:0 16px 10px}
 .how[open] .chev{transform:rotate(90deg)}
-/* dias */
 .seg{display:flex;gap:6px;margin-bottom:18px}
 .seg button{flex:1;border-radius:14px;padding:10px 4px;font-size:15px;font-weight:600;line-height:1.15;color:var(--ink2);background:var(--soft);transition:background .2s,color .2s}
 .seg button small{display:block;font-size:11px;font-weight:400;margin-top:2px}
 .seg button.on{color:var(--ink);background:var(--tint)}
 .seg button .sw{display:block;width:18px;height:3px;border-radius:2px;margin:6px auto 0;background:var(--acc)}
-.hint{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);margin:-6px 2px 14px}
-.hint svg{width:15px;height:15px;flex:none;color:var(--ink)}
 .prog{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink2);margin:0 2px 18px}
 .bar{flex:1;height:4px;border-radius:2px;background:var(--soft);overflow:hidden}
 .bar i{display:block;height:100%;background:var(--acc);transition:width .3s}
-/* bloco de visita */
 .blk{margin-bottom:26px}
 .bh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 2px 10px}
 .bh h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-.02em}
@@ -97,6 +92,8 @@ h1.big b{font-weight:700}
 .chk[aria-pressed="true"] svg{opacity:1}
 .card h3{margin:0 0 6px;font-size:18px;font-weight:600;letter-spacing:-.01em}
 .card p{margin:0;color:var(--ink2);font-size:14px;line-height:1.4}
+.card p.obs{display:flex;gap:6px;margin-top:8px;font-size:13px;color:var(--ink);background:var(--soft);border-radius:10px;padding:8px 10px}
+.card p.obs svg{width:14px;height:14px;flex:none;margin-top:2px}
 .meta{display:flex;gap:6px;margin-bottom:8px}
 .meta span{font-size:12px;font-weight:600;border-radius:8px;padding:3px 8px;background:var(--tint)}
 .meet{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink);margin-top:10px}
@@ -106,7 +103,6 @@ h1.big b{font-weight:700}
 .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .btn.ico{width:36px;padding:0;justify-content:center}
 .btn svg{width:15px;height:15px}
-/* manual */
 .sec{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:34px 0 14px}
 .sec.first{margin-top:8px}
 .item{border-bottom:1px solid var(--line)}
@@ -137,8 +133,7 @@ h1.big b{font-weight:700}
 .dd .do .li-ic i{background:var(--ink)}
 .dd .dont .li-ic i{background:#9c7e52}
 .dd li>span:last-child{padding-top:6px}
-/* contatos */
-.ceaday{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+.ceaday{border:1.5px solid var(--tint);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
 .ceaday h3{margin:0 0 10px;font-size:16px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
 .ceaday h3 small{font-size:12px;font-weight:400;color:var(--ink2)}
 .ceaday .row{display:flex;gap:10px;align-items:flex-start;padding:4px 0 6px}
@@ -235,7 +230,7 @@ nav button.on{color:var(--ink)}
 <script>
 (()=>{
 const HASH='e350ef425bd36ffa4a5e58d7c13ac9ee509436eef3a5a4a493dc3e089de78820';
-const FALLBACK={"versao": "2026-10-26 19:00", "projeto": "P12264 · Estudo Armários do Brasil", "cliente": "C&A", "pessoas": {"Karin": {"papel": "Moderação", "cor": "#B5694A"}, "Luna": {"papel": "Moderação", "cor": "#6E8B74"}, "Gabi": {"papel": "Acompanhamento", "cor": "#5F7FA3"}, "Gustavo": {"papel": "Acompanhamento", "cor": "#8A6A8C"}}, "encontro": {"titulo": "Como funciona o dia", "itens": [{"icone": "pin", "t": "Ponto de encontro principal: em frente à casa da entrevistada, 10 minutos antes do horário marcado."}, {"icone": "bag", "t": "Depois da casa, cada um segue para o shopping e a equipe se reencontra lá para a 2ª parte da visita."}, {"icone": "car", "t": "Sugerimos ir de Uber."}]}, "pracas": [{"id": "sp", "nome": "São Paulo", "cidade": "São Paulo - SP", "periodo": "28 a 30 de outubro de 2026", "resumo": "6 etnografias · 6 visitas a lojas", "dias": [{"data": "2026-10-28", "titulo": "Dia 1", "visitas": [{"bloco": "Visita 1", "janela": "9h às 13h", "provokers": ["Karin", "Gabi"], "cea": ["Jade", "Maria Bia", "Raissa Mantovani"], "casa": {"hora": "09:00", "nome": "Paula Regina B.", "idade": 37, "classe": "B2", "endereco": "Rua Dr. Raul da Rocha Medeiros, 114, ap. 2206, Torre Alfa · Tatuapé"}, "loja": {"nome": "C&A Shopping Metrô Tatuapé", "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"}}, {"bloco": "Visita 2", "janela": "15h às 19h", "provokers": ["Karin", "Gabi"], "cea": ["Renata", "Jade", "Melina"], "casa": {"hora": "15:00", "nome": "Paula S.", "idade": 39, "classe": "C2", "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"}, "loja": {"nome": "C&A Shopping Metrô Itaquera", "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"}}]}, {"data": "2026-10-29", "titulo": "Dia 2", "visitas": [{"bloco": "Visita 1", "janela": "9h às 13h", "provokers": ["Karin", "Gustavo"], "cea": ["Kelly", "Cecilia", "Talita Matsubara"], "casa": {"hora": "09:00", "nome": "Rovesca J.", "idade": 39, "classe": "A", "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"}, "loja": {"nome": "C&A Shopping Morumbi", "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"}}, {"bloco": "Visita 2", "janela": "15h às 19h", "provokers": ["Karin", "Gustavo"], "cea": ["Kelly", "Maria Eduarda", "Dani Pallerosi"], "casa": {"hora": "15:00", "nome": "Jozeane I.", "idade": 45, "classe": "C1", "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"}, "loja": {"nome": "C&A Shopping Interlagos", "endereco": "Av. Interlagos, 2255 · Interlagos"}}]}, {"data": "2026-10-30", "titulo": "Dia 3", "visitas": [{"bloco": "Visita 1", "janela": "9h às 13h", "provokers": ["Luna", "Gabi"], "cea": ["Renata", "Flavia", "Clarissa"], "casa": {"hora": "09:00", "nome": "Vivian C.", "idade": 39, "classe": "A", "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"}, "loja": {"nome": "C&A Av. Paulista / Centro (rua)", "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"}}, {"bloco": "Visita 2", "janela": "15h às 19h", "provokers": ["Luna", "Gabi"], "cea": ["Jade", "Marcele", "Larissa"], "casa": {"hora": "15:00", "nome": "Vitória S.", "idade": 21, "classe": "B1", "endereco": "Av. Handu, 1361 · Planalto Paulista"}, "loja": {"nome": "C&A Shopping Ibirapuera", "endereco": "Av. Ibirapuera, 3103 · Indianópolis"}}]}]}], "manual": [{"icone": "user", "titulo": "Como se apresentar", "texto": [{"icone": "mask", "t": "As entrevistadas não sabem que a pesquisa é da C&A. Assim as respostas sobre marcas e lojas ficam espontâneas."}, {"icone": "hand", "t": "Apresente-se só pelo primeiro nome, como parte da equipe da pesquisa. Por exemplo: “Oi, eu sou a Gabi, estou acompanhando a conversa hoje.”"}, {"icone": "tagoff", "t": "Não mencione C&A, cargo ou área. Evite crachás, sacolas, roupas ou objetos com a marca."}, {"icone": "bubble", "t": "Se ela perguntar quem está por trás do estudo, diga que é uma pesquisa sobre moda e guarda-roupa e deixe a moderadora conduzir a resposta."}]}, {"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": [{"icone": "people", "t": "Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes."}, {"icone": "heart", "t": "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos."}, {"icone": "mute", "t": "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."}]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": [{"icone": "shirt", "t": "Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis."}, {"icone": "sparkle", "t": "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."}]}, {"icone": "car", "titulo": "Locomoção e pontos de encontro", "texto": [{"icone": "pin", "t": "Chegue 10 minutos antes do horário e espere a equipe em frente à casa da entrevistada. Esse é o ponto de encontro principal."}, {"icone": "bag", "t": "Depois da casa, a equipe se reencontra no shopping para a 2ª parte da visita."}, {"icone": "car", "t": "Sugerimos ir de Uber. Chegue no horário de encontro."}]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": [{"icone": "note", "t": "Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita."}, {"icone": "route", "t": "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho."}, {"icone": "whisper", "t": "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."}]}], "dos": [{"icone": "hand", "t": "Cumprimentar e agradecer por estar nos recebendo"}, {"icone": "smile", "t": "Ser simpático e receptivo caso ela inicie uma conversa"}, {"icone": "eye", "t": "Demonstrar interesse de maneira natural, sem julgamentos"}, {"icone": "door", "t": "Respeitar os espaços indicados pela entrevistada e pela equipe"}], "donts": [{"icone": "tagoff", "t": "Dizer que é da C&A ou usar algo com a marca"}, {"icone": "route", "t": "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora"}, {"icone": "bubble", "t": "Completar respostas ou dar exemplos que possam influenciar o que ela dirá"}, {"icone": "user", "t": "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa"}, {"icone": "camera", "t": "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"}], "contatos": [{"pessoa": "Gabi", "nome": "Gabriela Sartoretto", "papel": "Acompanhamento do cliente · ponto de contato principal em campo", "tel": "+5511950600210", "telFmt": "(11) 95060-0210", "email": "gabriela.sartoretto@provokers.com.br"}, {"pessoa": "Gustavo", "nome": "Gustavo Pelegrini", "papel": "Acompanhamento do cliente", "tel": "+5511982623956", "telFmt": "(11) 98262-3956", "email": "gustavo.pelegrini@provokers.com.br"}, {"pessoa": "", "nome": "Renata Marques", "papel": "C&A", "tel": "+5511995263353", "telFmt": "(11) 99526-3353", "email": "renata.marques@cea.com.br"}], "avisos": []};
+const FALLBACK={"versao": "2026-10-27 15:30", "projeto": "P12264 · Estudo Armários do Brasil", "cliente": "C&A", "pessoas": {"Karin": {"papel": "Moderação", "cor": "#B5694A"}, "Luna": {"papel": "Moderação", "cor": "#6E8B74"}, "Gabi": {"papel": "Acompanhamento", "cor": "#5F7FA3"}, "Gustavo": {"papel": "Acompanhamento", "cor": "#8A6A8C"}}, "encontro": {"titulo": "Como funciona o dia", "itens": [{"icone": "pin", "t": "Ponto de encontro principal: em frente à casa da entrevistada, 10 minutos antes do horário marcado."}, {"icone": "bag", "t": "Depois da casa, cada um segue para o shopping e a equipe se reencontra lá para a 2ª parte da visita."}, {"icone": "car", "t": "Sugerimos ir de Uber."}]}, "pracas": [{"id": "sp", "nome": "São Paulo", "cidade": "São Paulo - SP", "periodo": "28 a 30 de outubro de 2026", "resumo": "6 etnografias · 6 visitas a lojas", "dias": [{"data": "2026-10-28", "titulo": "Dia 1", "visitas": [{"bloco": "Visita 1", "janela": "9h às 13h", "provokers": ["Karin", "Gabi"], "cea": ["Jade", "Maria Bia", "Raissa Mantovani"], "casa": {"hora": "09:00", "nome": "Mariana S.", "idade": 33, "classe": "B2", "endereco": "Rua Brigadeiro Morais, 91, ap. 908", "obs": "Entrada de moradores, nos fundos. Referência: Estação Belém do Metrô"}, "loja": {"nome": "C&A Shopping Metrô Tatuapé", "endereco": "Rua Dr. Melo Freire, s/n · Tatuapé"}}, {"bloco": "Visita 2", "janela": "15h às 19h", "provokers": ["Karin", "Gabi"], "cea": ["Renata", "Melina", "Laureen"], "casa": {"hora": "15:00", "nome": "Paula S.", "idade": 39, "classe": "C2", "endereco": "Rua Victorio Santim, 636 · Vila Carmosina"}, "loja": {"nome": "C&A Shopping Metrô Itaquera", "endereco": "Av. José Pinheiro Borges, s/n · Itaquera"}}]}, {"data": "2026-10-29", "titulo": "Dia 2", "visitas": [{"bloco": "Visita 1", "janela": "9h às 13h", "provokers": ["Karin", "Gustavo"], "cea": ["Kelly", "Cecilia", "Talita Matsubara", "Luara"], "casa": {"hora": "09:00", "nome": "Rovesca J.", "idade": 39, "classe": "A", "endereco": "Av. Vieira de Morais, 79, ap. 127 · Campo Belo"}, "loja": {"nome": "C&A Shopping Morumbi", "endereco": "Av. Roque Petroni Júnior, 1089 · Jardim das Acácias"}}, {"bloco": "Visita 2", "janela": "15h às 19h", "provokers": ["Karin", "Gustavo"], "cea": ["Kelly", "Maria Eduarda", "Dani Pallerosi"], "casa": {"hora": "15:00", "nome": "Jozeane I.", "idade": 45, "classe": "C1", "endereco": "Rua Prof. Amador de Lima Junior, 83 · Jardim Santa Cruz"}, "loja": {"nome": "C&A Shopping Interlagos", "endereco": "Av. Interlagos, 2255 · Interlagos"}}]}, {"data": "2026-10-30", "titulo": "Dia 3", "visitas": [{"bloco": "Visita 1", "janela": "9h às 13h", "provokers": ["Luna", "Gabi"], "cea": ["Renata", "Flavia", "Clarissa"], "casa": {"hora": "09:00", "nome": "Vivian C.", "idade": 39, "classe": "A", "endereco": "Rua Barata Ribeiro, 156, ap. 138 · Bela Vista"}, "loja": {"nome": "C&A Av. Paulista / Centro (rua)", "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"}}, {"bloco": "Visita 2", "janela": "15h às 19h", "provokers": ["Luna", "Gabi"], "cea": ["Jade", "Marcele", "Larissa"], "casa": {"hora": "15:00", "nome": "Vitória S.", "idade": 21, "classe": "B1", "endereco": "Av. Handu, 1361 · Planalto Paulista"}, "loja": {"nome": "C&A Shopping Ibirapuera", "endereco": "Av. Ibirapuera, 3103 · Indianópolis"}}]}]}], "manual": [{"icone": "user", "titulo": "Como se apresentar", "texto": [{"icone": "mask", "t": "As entrevistadas não sabem que a pesquisa é da C&A. Assim as respostas sobre marcas e lojas ficam espontâneas."}, {"icone": "hand", "t": "Apresente-se só pelo primeiro nome, como parte da equipe da pesquisa. Por exemplo: “Oi, eu sou a Gabi, estou acompanhando a conversa hoje.”"}, {"icone": "tagoff", "t": "Não mencione C&A, cargo ou área. Evite crachás, sacolas, roupas ou objetos com a marca."}, {"icone": "bubble", "t": "Se ela perguntar quem está por trás do estudo, diga que é uma pesquisa sobre moda e guarda-roupa e deixe a moderadora conduzir a resposta."}]}, {"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": [{"icone": "people", "t": "Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes."}, {"icone": "heart", "t": "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos."}, {"icone": "mute", "t": "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."}]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": [{"icone": "shirt", "t": "Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis."}, {"icone": "sparkle", "t": "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."}]}, {"icone": "car", "titulo": "Locomoção e pontos de encontro", "texto": [{"icone": "pin", "t": "Chegue 10 minutos antes do horário e espere a equipe em frente à casa da entrevistada. Esse é o ponto de encontro principal."}, {"icone": "bag", "t": "Depois da casa, a equipe se reencontra no shopping para a 2ª parte da visita."}, {"icone": "car", "t": "Sugerimos ir de Uber. Chegue no horário de encontro."}]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": [{"icone": "note", "t": "Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita."}, {"icone": "route", "t": "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho."}, {"icone": "whisper", "t": "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."}]}], "dos": [{"icone": "hand", "t": "Cumprimentar e agradecer por estar nos recebendo"}, {"icone": "smile", "t": "Ser simpático e receptivo caso ela inicie uma conversa"}, {"icone": "eye", "t": "Demonstrar interesse de maneira natural, sem julgamentos"}, {"icone": "door", "t": "Respeitar os espaços indicados pela entrevistada e pela equipe"}], "donts": [{"icone": "tagoff", "t": "Dizer que é da C&A ou usar algo com a marca"}, {"icone": "route", "t": "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora"}, {"icone": "bubble", "t": "Completar respostas ou dar exemplos que possam influenciar o que ela dirá"}, {"icone": "user", "t": "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa"}, {"icone": "camera", "t": "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"}], "contatos": [{"pessoa": "", "nome": "Renata Marques", "papel": "C&A", "tel": "+5511995263353", "telFmt": "(11) 99526-3353", "email": "renata.marques@cea.com.br"}, {"pessoa": "Gabi", "nome": "Gabriela Sartoretto", "papel": "Acompanhamento do cliente · ponto de contato principal em campo", "tel": "+5511950600210", "telFmt": "(11) 95060-0210", "email": "gabriela.sartoretto@provokers.com.br"}, {"pessoa": "Gustavo", "nome": "Gustavo Pelegrini", "papel": "Acompanhamento do cliente", "tel": "+5511982623956", "telFmt": "(11) 98262-3956", "email": "gustavo.pelegrini@provokers.com.br"}], "avisos": []};
 const store={get:k=>{try{return window.localStorage.getItem(k)}catch(_){return null}},set:(k,v)=>{try{window.localStorage.setItem(k,v)}catch(_){}}};
 const WD=['dom','seg','ter','qua','qui','sex','sáb'];
 const fmtDay=s=>{const [y,m,d]=String(s).split('-').map(Number);if(!y)return '';return WD[new Date(y,m-1,d).getDay()]+', '+String(d).padStart(2,'0')+'/'+String(m).padStart(2,'0')};
@@ -258,6 +253,7 @@ const I={
  pin:sv('<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>'),
  car:sv('<path d="M5 16V12l2-5h10l2 5v4z"/><circle cx="8" cy="16.5" r="1.5"/><circle cx="16" cy="16.5" r="1.5"/>'),
  clock:sv('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+ info:sv('<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8v.1"/>'),
  phone:sv('<path d="M6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.7 6.7l1.3-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5.5a2 2 0 0 1 2-2z"/>'),
  wa:sv('<path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/>'),
  mail:sv('<rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7l8 6 8-6"/>'),
@@ -285,7 +281,6 @@ const I={
 };
 let D=null,day=0,chosen=false,STOPS=[];
 let done={};try{done=JSON.parse(store.get('cea_done2')||'{}')||{}}catch(_){done={}}
-
 async function sha(s){
   if(window.crypto&&crypto.subtle){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
   return s==='PVKS2026!'?HASH:'';
@@ -310,7 +305,6 @@ async function load(){
   }catch(_){}
 }
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&D)load()});
-
 function addr(v){const c=(D.pracas[0].cidade||'São Paulo - SP');return String(v.endereco).split(/\s+ou\s+/i)[0].replace(/\s*·\s*/g,', ')+', '+c}
 const MAPAPPS={
   apple:{n:'Apple Maps',u:a=>`maps://?q=${a}`},
@@ -358,7 +352,6 @@ const chipP=k=>`<span class="chip"><span class="pdot" style="background:${esc(P(
 const chipC=n=>`<span class="chip"><span class="cdot"></span>${esc(n)} <em>· C&amp;A</em></span>`;
 const minus10=h=>{const m=/^(\d{1,2}):(\d{2})$/.exec(h||'');if(!m)return '';let t=+m[1]*60+ +m[2]-10;return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
 const ins=x=>{const o=typeof x==='string'?{t:x}:x;return `<div class="ins"><span class="mi">${I[o.icone]||I.question}</span><p>${nb(o.t)}</p></div>`};
-
 function render(){try{renderAll()}catch(e){console.error(e);if(FALLBACK&&D!==FALLBACK){D=FALLBACK;try{renderAll()}catch(_){}}}}
 function renderAll(){
   const p=D.pracas[0], today=todayStr();
@@ -378,19 +371,18 @@ function renderAll(){
   const nowIdx=d.data===today?STOPS.findIndex(s=>!done[s.k]):-1;
   const card=(s,i,last)=>{
     const isDone=!!done[s.k], casa=s.tipo==='casa';
-    const h=casa?esc(s.hora):'depois';
-    return `<div class="v"><div class="rail"><div class="h ${casa?'':'after'}">${h}</div>${last?'':'<div class="ln"></div>'}</div>
+    return `<div class="v"><div class="rail"><div class="h ${casa?'':'after'}">${casa?esc(s.hora):'depois'}</div>${last?'':'<div class="ln"></div>'}</div>
     <div class="card ${s.tipo} ${i===nowIdx?'now':''} ${isDone?'done':''}">
       <div class="chead"><div class="kind">${casa?I.home+'Etnografia em casa':I.bag+'Visita à loja'}${i===nowIdx?'<span class="tag">Agora</span>':''}</div>
       <button type="button" class="chk" data-k="${esc(s.k)}" aria-pressed="${isDone}" aria-label="Marcar ${esc(s.nome)} como visitada">${I.tick}</button></div>
       <h3>${nb(s.nome)}</h3>
       ${casa&&(s.idade||s.classe)?`<div class="meta">${s.idade?`<span>${esc(s.idade)} anos</span>`:''}${s.classe?`<span>Classe ${esc(s.classe)}</span>`:''}</div>`:''}
       <p>${nb(s.endereco)}</p>
+      ${s.obs?`<p class="obs">${I.info}<span>${nb(s.obs)}</span></p>`:''}
       <div class="meet">${casa?I.clock+nb('Encontro às '+minus10(s.hora)+' em frente à casa'):I.pin+nb('Reencontro da equipe no shopping')}</div>
       <div class="acts"><button type="button" class="btn map" data-i="${i}">${I.pin}Mapa</button><button type="button" class="btn ghost uber" data-i="${i}" aria-label="Copiar endereço e abrir o Uber">${I.copy}Uber</button></div>
     </div></div>`};
-  $('#blocks').innerHTML=d.visitas.map((v,bi)=>{
-    const a=bi*2;
+  $('#blocks').innerHTML=d.visitas.map((v,bi)=>{const a=bi*2;
     return `<section class="blk"><div class="bh"><h2>${esc(v.bloco)}</h2><span>${esc(v.janela)}</span></div>
     <div class="crew"><div class="lb">Provokers</div><div class="chips">${(v.provokers||[]).map(chipP).join('')}</div>
     <div class="lb">C&amp;A</div><div class="chips">${(v.cea||[]).map(chipC).join('')}</div></div>
@@ -398,12 +390,10 @@ function renderAll(){
   $('#blocks').querySelectorAll('.chk').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;if(done[k])delete done[k];else done[k]=1;store.set('cea_done2',JSON.stringify(done));render()}));
   $('#blocks').querySelectorAll('.map').forEach(b=>b.addEventListener('click',()=>openMap(STOPS[+b.dataset.i])));
   $('#blocks').querySelectorAll('.uber').forEach(b=>b.addEventListener('click',()=>openUber(STOPS[+b.dataset.i])));
-
   $('#manual').innerHTML='<h2 class="sec first">Antes de&nbsp;entrar</h2>'+D.manual.map((m,i)=>`<details class="item" ${i===0?'open':''}><summary><span class="ic">${I[m.icone]||I.question}</span><b>${nb(m.titulo)}</b>${I.chev}</summary><div class="body">${m.texto.map(ins).join('')}</div></details>`).join('');
   const li=(x,ok)=>{const o=typeof x==='string'?{t:x}:x;return `<li><span class="li-ic">${I[o.icone]||I.question}<i>${ok?I.mini_ok:I.mini_no}</i></span><span>${nb(o.t)}</span></li>`};
   $('#dd').innerHTML=`<div class="col do"><h4>Pode</h4><ul>${D.dos.map(x=>li(x,1)).join('')}</ul></div><div class="col dont"><h4>Evite</h4><ul>${D.donts.map(x=>li(x,0)).join('')}</ul></div>`;
-
-  $('#ceaTeam').innerHTML=p.dias.map((dd,i)=>`<div class="ceaday d${i%3}" style="border-color:var(--tint);border-width:1.5px"><h3>${esc(dd.titulo)} <small>${fmtDay(dd.data)}</small></h3>${dd.visitas.map(v=>`<div class="row"><span class="k">${esc(v.bloco)}<br>${esc(v.janela)}</span><div class="chips">${(v.cea||[]).map(chipC).join('')}</div></div>`).join('')}</div>`).join('');
+  $('#ceaTeam').innerHTML=p.dias.map((dd,i)=>`<div class="ceaday d${i%3}"><h3>${esc(dd.titulo)} <small>${fmtDay(dd.data)}</small></h3>${dd.visitas.map(v=>`<div class="row"><span class="k">${esc(v.bloco)}<br>${esc(v.janela)}</span><div class="chips">${(v.cea||[]).map(chipC).join('')}</div></div>`).join('')}</div>`).join('');
   const ctCard=c=>{const ini=c.nome.split(' ').map(x=>x[0]).slice(0,2).join('');const cor=c.pessoa?P(c.pessoa).cor:'#111';
     return `<div class="ct"><div class="av" style="background:${esc(cor)}">${esc(ini)}</div><div style="flex:1;min-width:0"><h3>${esc(c.nome)}</h3><p>${nb(c.papel)}</p>
     <div class="ln2">${esc(c.telFmt)}</div><div class="ln2" style="color:var(--ink2)">${esc(c.email)}</div>
