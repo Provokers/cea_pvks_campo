@@ -1,5 +1,5 @@
 {
-  "versao": "2026-11-03 11:30",
+  "versao": "2026-11-04 09:00",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
@@ -61,7 +61,11 @@
               "provokers": [
                 "Isa"
               ],
-              "cea": [],
+              "cea": [
+                "Jade",
+                "Juliana B.",
+                "Luciana S."
+              ],
               "casa": {
                 "hora": "09:00",
                 "nome": "Viviane M.",
@@ -82,7 +86,11 @@
               "provokers": [
                 "Isa"
               ],
-              "cea": [],
+              "cea": [
+                "Jade",
+                "Juliana B.",
+                "Luciana S."
+              ],
               "casa": {
                 "hora": "15:00",
                 "nome": "Ana Gloria F.",
@@ -109,7 +117,10 @@
               "provokers": [
                 "Isa"
               ],
-              "cea": [],
+              "cea": [
+                "Renata",
+                "Juliana B."
+              ],
               "casa": {
                 "hora": "09:00",
                 "nome": "Cinthia Cristina F.",
@@ -130,7 +141,10 @@
               "provokers": [
                 "Isa"
               ],
-              "cea": [],
+              "cea": [
+                "Renata",
+                "Juliana B."
+              ],
               "casa": {
                 "hora": "15:00",
                 "nome": "Beatriz V.",
@@ -157,7 +171,9 @@
               "provokers": [
                 "Isa"
               ],
-              "cea": [],
+              "cea": [
+                "Renata"
+              ],
               "casa": {
                 "hora": "09:00",
                 "nome": "Caroline A.",
@@ -178,7 +194,9 @@
               "provokers": [
                 "Isa"
               ],
-              "cea": [],
+              "cea": [
+                "Renata"
+              ],
               "casa": {
                 "hora": "15:00",
                 "nome": "Jheniffer L.",
