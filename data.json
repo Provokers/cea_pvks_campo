@@ -1,5 +1,5 @@
 {
-  "versao": "2026-10-27 15:30",
+  "versao": "2026-11-03 11:30",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
@@ -18,6 +18,10 @@
     "Gustavo": {
       "papel": "Acompanhamento",
       "cor": "#8A6A8C"
+    },
+    "Isa": {
+      "papel": "Acompanhamento",
+      "cor": "#C08A3E"
     }
   },
   "encontro": {
@@ -29,7 +33,7 @@
       },
       {
         "icone": "bag",
-        "t": "Depois da casa, cada um segue para o shopping e a equipe se reencontra lá para a 2ª parte da visita."
+        "t": "Depois da casa, cada um segue para a loja e a equipe se reencontra lá para a 2ª parte da visita."
       },
       {
         "icone": "car",
@@ -38,6 +42,195 @@
     ]
   },
   "pracas": [
+    {
+      "id": "rj",
+      "uf": "RJ",
+      "nome": "Rio de Janeiro",
+      "cidade": "Rio de Janeiro - RJ",
+      "inicio": "2026-11-04",
+      "periodo": "4 a 6 de novembro de 2026",
+      "resumo": "6 etnografias · 6 visitas a lojas",
+      "dias": [
+        {
+          "data": "2026-11-04",
+          "titulo": "Dia 1",
+          "visitas": [
+            {
+              "bloco": "Visita 1",
+              "janela": "9h às 13h",
+              "provokers": [
+                "Isa"
+              ],
+              "cea": [],
+              "casa": {
+                "hora": "09:00",
+                "nome": "Viviane M.",
+                "idade": 47,
+                "classe": "A",
+                "endereco": "Rua Santa Clara, 234, ap. 501 · Copacabana",
+                "obs": "Portaria preta, em rua residencial"
+              },
+              "loja": {
+                "nome": "C&A Shopping Rio Sul",
+                "endereco": "Rua Lauro Müller, 116 · Botafogo",
+                "formato": "shopping"
+              }
+            },
+            {
+              "bloco": "Visita 2",
+              "janela": "15h às 19h",
+              "provokers": [
+                "Isa"
+              ],
+              "cea": [],
+              "casa": {
+                "hora": "15:00",
+                "nome": "Ana Gloria F.",
+                "idade": 29,
+                "classe": "B2",
+                "endereco": "Rua Macedo Sobrinho, 46 A, ap. 302 · Humaitá",
+                "obs": "Em frente ao Colégio Alfa"
+              },
+              "loja": {
+                "nome": "C&A Copacabana (rua)",
+                "endereco": "Av. Nossa Senhora de Copacabana, 749 · Copacabana",
+                "formato": "rua"
+              }
+            }
+          ]
+        },
+        {
+          "data": "2026-11-05",
+          "titulo": "Dia 2",
+          "visitas": [
+            {
+              "bloco": "Visita 1",
+              "janela": "9h às 13h",
+              "provokers": [
+                "Isa"
+              ],
+              "cea": [],
+              "casa": {
+                "hora": "09:00",
+                "nome": "Cinthia Cristina F.",
+                "idade": 41,
+                "classe": "B1",
+                "endereco": "Rua Visconde de Pirajá, 444, ap. 702 · Ipanema",
+                "obs": "Portão cinza ao lado da loja Aviator"
+              },
+              "loja": {
+                "nome": "C&A Ipanema (rua)",
+                "endereco": "Rua Visconde de Pirajá, 136 · Ipanema",
+                "formato": "rua"
+              }
+            },
+            {
+              "bloco": "Visita 2",
+              "janela": "15h às 19h",
+              "provokers": [
+                "Isa"
+              ],
+              "cea": [],
+              "casa": {
+                "hora": "15:00",
+                "nome": "Beatriz V.",
+                "idade": 28,
+                "classe": "A",
+                "endereco": "Rua Desenhista Luís Guimarães, 260, bloco 2, ap. 403 · Barra da Tijuca",
+                "obs": "Em frente ao shopping Rio Design"
+              },
+              "loja": {
+                "nome": "C&A BarraShopping",
+                "endereco": "Av. das Américas, 4666 · Barra da Tijuca",
+                "formato": "shopping"
+              }
+            }
+          ]
+        },
+        {
+          "data": "2026-11-06",
+          "titulo": "Dia 3",
+          "visitas": [
+            {
+              "bloco": "Visita 1",
+              "janela": "9h às 13h",
+              "provokers": [
+                "Isa"
+              ],
+              "cea": [],
+              "casa": {
+                "hora": "09:00",
+                "nome": "Caroline A.",
+                "idade": 33,
+                "classe": "C1",
+                "endereco": "Rua Navarro da Costa, 186, casa 01 · Marechal Hermes",
+                "obs": "Referência: Paróquia Nossa Senhora das Graças"
+              },
+              "loja": {
+                "nome": "C&A Madureira",
+                "endereco": "Estrada do Portela, 41 · Madureira",
+                "formato": "rua"
+              }
+            },
+            {
+              "bloco": "Visita 2",
+              "janela": "15h às 19h",
+              "provokers": [
+                "Isa"
+              ],
+              "cea": [],
+              "casa": {
+                "hora": "15:00",
+                "nome": "Jheniffer L.",
+                "idade": 22,
+                "classe": "C2",
+                "endereco": "Rua Paulo Prado, 19 · Oswaldo Cruz",
+                "obs": "Prédio do Ram, perto da escola José Emidio"
+              },
+              "loja": {
+                "nome": "C&A Madureira",
+                "endereco": "Estrada do Portela, 41 · Madureira",
+                "formato": "rua"
+              }
+            }
+          ]
+        }
+      ],
+      "contatos": [
+        {
+          "pessoa": "Isa",
+          "nome": "Isabella Salvini",
+          "papel": "Acompanhamento · em campo em todas as visitas do Rio",
+          "tel": "+5511971475577",
+          "telFmt": "(11) 97147-5577",
+          "email": "isabella.salvini@provokers.com.br"
+        },
+        {
+          "pessoa": "Luna",
+          "nome": "Luna Morena",
+          "papel": "Moderação",
+          "tel": "+5511984569379",
+          "telFmt": "(11) 98456-9379",
+          "email": ""
+        },
+        {
+          "pessoa": "Gabi",
+          "nome": "Gabriela Sartoretto",
+          "papel": "Provokers · coordenação",
+          "tel": "+5511950600210",
+          "telFmt": "(11) 95060-0210",
+          "email": "gabriela.sartoretto@provokers.com.br"
+        },
+        {
+          "pessoa": "Gustavo",
+          "nome": "Gustavo Pelegrini",
+          "papel": "Provokers",
+          "tel": "+5511982623956",
+          "telFmt": "(11) 98262-3956",
+          "email": "gustavo.pelegrini@provokers.com.br"
+        }
+      ]
+    },
     {
       "id": "sp",
       "nome": "São Paulo",
@@ -180,7 +373,8 @@
               },
               "loja": {
                 "nome": "C&A Av. Paulista / Centro (rua)",
-                "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600"
+                "endereco": "Av. Paulista, 1374 ou Rua Augusta, 1600",
+                "formato": "rua"
               }
             },
             {
@@ -208,6 +402,26 @@
               }
             }
           ]
+        }
+      ],
+      "uf": "SP",
+      "inicio": "2026-10-28",
+      "contatos": [
+        {
+          "pessoa": "Gabi",
+          "nome": "Gabriela Sartoretto",
+          "papel": "Acompanhamento do cliente · ponto de contato principal em campo",
+          "tel": "+5511950600210",
+          "telFmt": "(11) 95060-0210",
+          "email": "gabriela.sartoretto@provokers.com.br"
+        },
+        {
+          "pessoa": "Gustavo",
+          "nome": "Gustavo Pelegrini",
+          "papel": "Acompanhamento do cliente",
+          "tel": "+5511982623956",
+          "telFmt": "(11) 98262-3956",
+          "email": "gustavo.pelegrini@provokers.com.br"
         }
       ]
     }
@@ -277,7 +491,7 @@
         },
         {
           "icone": "bag",
-          "t": "Depois da casa, a equipe se reencontra no shopping para a 2ª parte da visita."
+          "t": "Depois da casa, a equipe se reencontra na loja para a 2ª parte da visita."
         },
         {
           "icone": "car",
@@ -352,22 +566,6 @@
       "tel": "+5511995263353",
       "telFmt": "(11) 99526-3353",
       "email": "renata.marques@cea.com.br"
-    },
-    {
-      "pessoa": "Gabi",
-      "nome": "Gabriela Sartoretto",
-      "papel": "Acompanhamento do cliente · ponto de contato principal em campo",
-      "tel": "+5511950600210",
-      "telFmt": "(11) 95060-0210",
-      "email": "gabriela.sartoretto@provokers.com.br"
-    },
-    {
-      "pessoa": "Gustavo",
-      "nome": "Gustavo Pelegrini",
-      "papel": "Acompanhamento do cliente",
-      "tel": "+5511982623956",
-      "telFmt": "(11) 98262-3956",
-      "email": "gustavo.pelegrini@provokers.com.br"
     }
   ],
   "avisos": []
