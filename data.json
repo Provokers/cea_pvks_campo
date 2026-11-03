@@ -1,5 +1,5 @@
 {
-  "versao": "2026-11-04 09:00",
+  "versao": "2026-11-03 18:00",
   "projeto": "P12264 · Estudo Armários do Brasil",
   "cliente": "C&A",
   "pessoas": {
@@ -68,11 +68,11 @@
               ],
               "casa": {
                 "hora": "09:00",
-                "nome": "Viviane M.",
-                "idade": 47,
+                "nome": "Aline A.",
+                "idade": 42,
                 "classe": "A",
-                "endereco": "Rua Santa Clara, 234, ap. 501 · Copacabana",
-                "obs": "Portaria preta, em rua residencial"
+                "endereco": "Rua Barata Ribeiro, 184, ap. 902 · Copacabana",
+                "obs": "Edifício Montefiore"
               },
               "loja": {
                 "nome": "C&A Shopping Rio Sul",
@@ -97,7 +97,7 @@
                 "idade": 29,
                 "classe": "B2",
                 "endereco": "Rua Macedo Sobrinho, 46 A, ap. 302 · Humaitá",
-                "obs": "Em frente ao Colégio Alfa"
+                "obs": "Portão branco. Em frente ao Colégio Alfa"
               },
               "loja": {
                 "nome": "C&A Copacabana (rua)",
@@ -206,9 +206,9 @@
                 "obs": "Prédio do Ram, perto da escola José Emidio"
               },
               "loja": {
-                "nome": "C&A Madureira",
-                "endereco": "Estrada do Portela, 41 · Madureira",
-                "formato": "rua"
+                "nome": "C&A Bangu Shopping",
+                "endereco": "Rua Fonseca, 240 · Bangu",
+                "formato": "shopping"
               }
             }
           ]
