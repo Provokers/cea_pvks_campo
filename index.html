@@ -170,6 +170,12 @@ nav button.on{color:var(--ink)}
 .sheet .opt{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border-radius:14px;background:var(--soft);margin-bottom:8px;font-size:16px;font-weight:500;text-align:left}
 .sheet .opt svg{width:20px;height:20px}
 .sheet .cancel{width:100%;padding:14px;font-size:16px;color:var(--ink2)}
+.topr{display:flex;align-items:center;gap:12px}
+.exbtn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:99px;border:1px solid var(--line);font-size:13px;font-weight:500;background:#fff}
+.exbtn svg{width:15px;height:15px}
+.sheet .opt span{display:flex;flex-direction:column;line-height:1.25}
+.sheet .opt small{font-size:12px;font-weight:400;color:var(--ink2);margin-top:2px}
+.exst{display:flex;align-items:center;gap:8px}
 .toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 12px);transform:translate(-50%,-80px);background:var(--ink);color:#fff;font-size:13px;padding:10px 16px;border-radius:99px;transition:transform .35s;z-index:80;max-width:calc(100% - 32px);text-align:center}
 .toast.show{transform:translate(-50%,0)}
 .places{display:flex;gap:6px;margin:0 0 18px;overflow-x:auto;scrollbar-width:none}
@@ -210,7 +216,8 @@ nav button.on{color:var(--ink)}
  <div id="scroll"><div class="wrap">
   <div class="top">
     <img class="cea" src="cea.png" alt="C&A">
-    <div class="status" id="st"><span class="dot"></span><span id="stt">Online</span></div>
+    <div class="topr"><div class="status" id="st"><span class="dot"></span><span id="stt">Online</span></div>
+    <button type="button" class="exbtn" id="exBtn" aria-label="Exportar roteiro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M7.5 8L12 3.5 16.5 8"/><path d="M5 13.5v4a2.5 2.5 0 0 0 2.5 2.5h9a2.5 2.5 0 0 0 2.5-2.5v-4"/></svg>Exportar</button></div>
   </div>
   <section class="view on" id="v-agenda">
     <div class="places" id="places" role="tablist" aria-label="Praça"></div>
@@ -249,6 +256,11 @@ nav button.on{color:var(--ink)}
 <div class="sheet" id="sheet" aria-hidden="true"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="shT">
   <h4 id="shT">Abrir com</h4><p>Sua escolha fica salva. Dá para trocar depois na aba&nbsp;Equipe.</p>
   <div id="shOpts"></div><button type="button" class="cancel" id="shX">Cancelar</button></div></div>
+<div class="sheet" id="exSheet" aria-hidden="true"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="exT">
+  <h4 id="exT">Exportar roteiro</h4><p id="exStamp" class="exst"></p>
+  <button type="button" class="opt" id="exPdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4"/></svg><span>PDF<small>Página única, ideal para mandar no WhatsApp</small></span></button>
+  <button type="button" class="opt" id="exJpg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9.5" r="1.6"/><path d="M5 18l5-5 4 4 2-2 3 3"/></svg><span>Imagem JPG<small>Tira longa para ver na galeria</small></span></button>
+  <button type="button" class="cancel" id="exX">Cancelar</button></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -303,7 +315,7 @@ const I={
  mini_ok:'<svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.3l2 2 4-4.6"/></svg>',
  mini_no:'<svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M3.8 3.8l4.4 4.4M8.2 3.8L3.8 8.2"/></svg>'
 };
-let D=null,day=0,chosen=false,STOPS=[],PI=-1,SYNC='';
+let D=null,day=0,chosen=false,STOPS=[],PI=-1,SYNC='',FRESH=0;
 const STATIC={"encontro": {"titulo": "Como funciona o dia", "itens": [{"icone": "pin", "t": "Ponto de encontro principal: em frente à casa da entrevistada, 10 minutos antes do horário marcado."}, {"icone": "bag", "t": "Depois da casa, cada um segue para a loja e a equipe se reencontra lá para a 2ª parte da visita."}, {"icone": "car", "t": "Sugerimos ir de Uber."}]}, "manual": [{"icone": "user", "titulo": "Como se apresentar", "texto": [{"icone": "mask", "t": "As entrevistadas não sabem que a pesquisa é da C&A. Assim as respostas sobre marcas e lojas ficam espontâneas."}, {"icone": "hand", "t": "Apresente-se só pelo primeiro nome, como parte da equipe da pesquisa. Por exemplo: “Oi, eu sou a Gabi, estou acompanhando a conversa hoje.”"}, {"icone": "tagoff", "t": "Não mencione C&A, cargo ou área. Evite crachás, sacolas, roupas ou objetos com a marca."}, {"icone": "bubble", "t": "Se ela perguntar quem está por trás do estudo, diga que é uma pesquisa sobre moda e guarda-roupa e deixe a moderadora conduzir a resposta."}]}, {"icone": "home", "titulo": "Estamos entrando na casa de alguém", "texto": [{"icone": "people", "t": "Vamos visitar pessoas que vivem em contextos, realidades e condições socioeconômicas diferentes."}, {"icone": "heart", "t": "É um espaço pessoal, aberto gentilmente para nós. Mantenha uma postura educada, respeitosa e livre de julgamentos sobre a casa, hábitos, objetos, opiniões ou comportamentos."}, {"icone": "mute", "t": "Evite comentários, expressões ou reações que possam causar constrangimento ou fazer a entrevistada se sentir avaliada."}]}, {"icone": "shirt", "titulo": "Como me vestir", "texto": [{"icone": "shirt", "t": "Roupas básicas e confortáveis, com aparência discreta e informal: camiseta ou blusa básica, calça jeans e tênis."}, {"icone": "sparkle", "t": "Evite roupas muito formais, peças ou acessórios chamativos. A visita deve ter clima próximo e natural, sem distância entre participantes e observadores."}]}, {"icone": "car", "titulo": "Locomoção e pontos de encontro", "texto": [{"icone": "pin", "t": "Chegue 10 minutos antes do horário e espere a equipe em frente à casa da entrevistada. Esse é o ponto de encontro principal."}, {"icone": "bag", "t": "Depois da casa, a equipe se reencontra na loja para a 2ª parte da visita."}, {"icone": "car", "t": "Sugerimos ir de Uber. Chegue no horário de encontro."}]}, {"icone": "question", "titulo": "Tenho uma pergunta. Posso fazer?", "texto": [{"icone": "note", "t": "Durante a entrevista, anote suas perguntas e impressões e deixe para conversar ao final da visita."}, {"icone": "route", "t": "O ritmo da conversa é da moderadora. O roteiro segue uma ordem pensada: cada pergunta prepara a próxima até chegar às respostas que buscamos. Antecipar um assunto pode quebrar esse caminho."}, {"icone": "whisper", "t": "Se surgir algo importante, fale discretamente com quem acompanha. Ela vai avaliar a melhor maneira e o melhor momento de abordar o assunto."}]}], "dos": [{"icone": "hand", "t": "Cumprimentar e agradecer por estar nos recebendo"}, {"icone": "smile", "t": "Ser simpático e receptivo caso ela inicie uma conversa"}, {"icone": "eye", "t": "Demonstrar interesse de maneira natural, sem julgamentos"}, {"icone": "door", "t": "Respeitar os espaços indicados pela entrevistada e pela equipe"}], "donts": [{"icone": "tagoff", "t": "Dizer que é da C&A ou usar algo com a marca"}, {"icone": "route", "t": "Antecipar perguntas ou pular etapas do roteiro. Cada pergunta prepara a próxima, e o timing é da moderadora"}, {"icone": "bubble", "t": "Completar respostas ou dar exemplos que possam influenciar o que ela dirá"}, {"icone": "user", "t": "Falar sobre sua própria experiência ou opinião sobre o tema da pesquisa"}, {"icone": "camera", "t": "Fotografar, filmar ou registrar a casa, objetos ou pessoas sem autorização prévia"}], "avisos": []};
 const CFG_DEFAULT={pracas_csv:'',visitas_csv:'',contatos_csv:''};
 const PALETTE=['#B5694A','#6E8B74','#5F7FA3','#8A6A8C','#C08A3E','#4F7C82','#9A5B6B','#7A7F3E'];
@@ -391,7 +403,7 @@ async function load(){
     const raw={pracas,visitas,contatos};
     if(!build(raw).pracas.length)return;
     const now=new Date(),when=String(now.getDate()).padStart(2,'0')+'/'+String(now.getMonth()+1).padStart(2,'0')+' às '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
-    store.set('cea_raw3',JSON.stringify({raw,when}));SYNC=when;apply(raw,when);$('#ver').textContent='Sincronizado em '+SYNC;
+    store.set('cea_raw3',JSON.stringify({raw,when}));SYNC=when;FRESH=Date.now();apply(raw,when);$('#ver').textContent='Sincronizado em '+SYNC;
   }catch(_){}
 }
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&D)load()});
@@ -501,6 +513,180 @@ function renderAll(){
   $('#ver').textContent=SYNC&&SYNC!=='versão embutida'?'Sincronizado em '+SYNC:'Dados salvos no aparelho';
   renderPref();
 }
+/* ===== Exportar roteiro (imagem longa ou PDF), desenhado em canvas, sem dependências ===== */
+const EXF='-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Roboto,sans-serif';
+const TINTS=[['#f1e8d8','#d2bf9a'],['#e7d8bf','#b89b6e'],['#dcc6a2','#9c7e52']];
+const rawNb=t=>{let s=String(t??'').trim().replace(/\s+/g,' ');
+  s=s.replace(/(?<=^|[ \u00a0])([A-Za-zÀ-ú]{1,2}|\d+[.,]?|·|ap\.|Av\.|Dr\.|Prof\.|nº)\s/g,'$1\u00a0');
+  return s.replace(/ (\S+)$/,'\u00a0$1')};
+const loadImg=src=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=src});
+function stampInfo(){
+  const now=new Date(),gen=String(now.getDate()).padStart(2,'0')+'/'+String(now.getMonth()+1).padStart(2,'0')+' às '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+  if(!SYNC||SYNC==='versão embutida')return{main:'Versão sem sincronização',sub:'Gerado em '+gen+'. Abra o app com internet para conferir a versão atual.',ok:false,gen};
+  if(FRESH&&Date.now()-FRESH<10*60*1000)return{main:'Atualizado em '+SYNC,sub:'Versão mais recente da planilha no momento da exportação. Gerado em '+gen+'.',ok:true,gen};
+  return{main:'Última atualização em '+SYNC,sub:'Exportado sem conexão em '+gen+'. Pode haver mudanças depois disso.',ok:false,gen};
+}
+function layoutDoc(ctx,draw,p,imgs,st){
+  const W=430,M=22,CW=W-2*M;let y=0;
+  const font=(w,sz)=>{ctx.font=`${w} ${sz}px ${EXF}`};
+  const rr=(x,yy,w,h,r,fill,stroke,lw)=>{if(!draw)return;ctx.beginPath();ctx.moveTo(x+r,yy);ctx.arcTo(x+w,yy,x+w,yy+h,r);ctx.arcTo(x+w,yy+h,x,yy+h,r);ctx.arcTo(x,yy+h,x,yy,r);ctx.arcTo(x,yy,x+w,yy,r);ctx.closePath();
+    if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw||1;ctx.stroke()}};
+  const wrap=(t,maxW)=>{const words=String(t).split(' ');const lines=[];let cur='';
+    for(const w of words){const test=cur?cur+' '+w:w;if(ctx.measureText(test).width<=maxW||!cur)cur=test;else{lines.push(cur);cur=w}}if(cur)lines.push(cur);return lines};
+  const text=(t,x,yy,maxW,w,sz,col,lh)=>{font(w,sz);const L=wrap(rawNb(t),maxW);lh=lh||Math.round(sz*1.4);
+    if(draw&&!(x===0&&yy===0)){ctx.fillStyle=col;ctx.textBaseline='top';L.forEach((l,i)=>ctx.fillText(l,x,yy+i*lh))}return L.length*lh};
+  const dot=(x,yy,c,r)=>{if(!draw)return;ctx.beginPath();ctx.arc(x,yy,r||4.5,0,Math.PI*2);ctx.fillStyle=c;ctx.fill()};
+  const chips=(items,x,yy,maxW)=>{font(400,13);let cx=x,cy=yy;const h=28,g=6;const dr=draw&&!(x===0&&yy===0);
+    items.forEach(it=>{const nw=ctx.measureText(it.n).width,tw=ctx.measureText(' · '+it.r).width,w=11+9+6+nw+tw+11;
+      if(cx+w>x+maxW&&cx>x){cx=x;cy+=h+g}
+      if(dr)rr(cx,cy,w,h,14,it.tbd?'#fff':'#f5f3ef',it.tbd?'#d6d3cc':null);
+      if(dr){if(!it.tbd)dot(cx+11+4.5,cy+h/2,it.c);ctx.textBaseline='middle';font(400,13);ctx.fillStyle=it.tbd?'#6e6e73':'#111';
+        ctx.fillText(it.n,cx+(it.tbd?11:26),cy+h/2+.5);if(it.r){ctx.fillStyle='#6e6e73';ctx.fillText(' · '+it.r,cx+(it.tbd?11:26)+nw,cy+h/2+.5)}}
+      cx+=w+g});return cy+h-yy};
+  const hline=yy=>{if(draw){ctx.fillStyle='#e8e6e1';ctx.fillRect(M,yy,CW,1)}};
+  const section=(t,yy)=>text(t,M,yy,CW,700,22,'#111');
+  // fundo
+  if(draw){ctx.fillStyle='#fff';ctx.fillRect(0,0,W,99999)}
+  // cabeçalho
+  y=26;
+  if(imgs.cea){const h=36,w=imgs.cea.width*h/imgs.cea.height;if(draw)ctx.drawImage(imgs.cea,M,y,w,h)}
+  if(imgs.pv){const h=15,w=imgs.pv.width*h/imgs.pv.height;if(draw)ctx.drawImage(imgs.pv,W-M-w,y+11,w,h)}
+  y+=54;
+  // selo de atualização
+  {font(700,15);const hm=text(st.main,0,0,CW-48,700,15,'#111',20);const hs=text(st.sub,0,0,CW-48,400,12,'#3a3a3c',17);const bh=14+hm+4+hs+14;
+   rr(M,y,CW,bh,16,st.ok?'#f1e8d8':'#fff',st.ok?null:'#b3261e',1.5);
+   dot(M+18,y+14+10,st.ok?'#34c759':'#b3261e',5);
+   text(st.main,M+34,y+14,CW-48,700,15,'#111',20);text(st.sub,M+34,y+14+hm+4,CW-48,400,12,'#3a3a3c',17);y+=bh+26}
+  // título
+  font(300,40);if(draw){ctx.fillStyle='#111';ctx.textBaseline='top';ctx.fillText('roteiro de',M,y)}y+=42;
+  font(700,40);if(draw)ctx.fillText('campo.',M,y);y+=52;
+  y+=text(p.nome+' · '+p.periodo+' · '+p.resumo,M,y,CW,400,15,'#6e6e73',21)+20;
+  // como funciona
+  if(D.encontro){const items=D.encontro.itens.map(i=>i.t);let h=16+24+8;items.forEach(t=>{h+=text('• '+t,0,0,CW-32,400,14,'#3a3a3c',20)+8});h+=8;
+    rr(M,y,CW,h,18,null,'#e8e6e1');let yy=y+16;yy+=text(D.encontro.titulo,M+16,yy,CW-32,600,15,'#111',24)+8;
+    items.forEach(t=>{yy+=text('• '+t,M+16,yy,CW-32,400,14,'#3a3a3c',20)+8});y+=h+30}
+  // dias
+  p.dias.forEach((d,di)=>{const [tint,acc]=TINTS[di%3];
+    rr(M,y,CW,56,16,tint);font(700,26);if(draw){ctx.fillStyle='#111';ctx.textBaseline='middle';ctx.fillText(d.titulo,M+18,y+28)}
+    font(400,14);const ds=fmtDay(d.data);if(draw){ctx.fillStyle='#3a3a3c';ctx.fillText(ds,W-M-18-ctx.measureText(ds).width,y+29)}y+=56+20;
+    d.visitas.forEach(v=>{
+      font(700,22);if(draw){ctx.fillStyle='#111';ctx.textBaseline='top';ctx.fillText(v.bloco,M+2,y)}
+      font(400,13);if(draw){ctx.fillStyle='#6e6e73';const jw=ctx.measureText(v.janela).width;ctx.fillText(v.janela,W-M-2-jw,y+7)}y+=36;
+      const prov=(v.provokers||[]).map(k=>({n:k,r:P(k).papel,c:P(k).cor})),cea=(v.cea||[]).map(n=>({n,r:'C&A',c:'#111'}));
+      const TB=[{n:'A confirmar',r:'',tbd:true}];
+      const hp=chips(prov.length?prov:TB,0,0,CW-24),hc=chips(cea.length?cea:TB,0,0,CW-24);
+      const ch=12+18+hp+10+18+hc+12;rr(M,y,CW,ch,18,'#fff',acc,1.5);let yy=y+12;
+      yy+=text('Provokers',M+14,yy,CW,400,12,'#6e6e73',18);yy+=chips(prov.length?prov:TB,M+12,yy,CW-24)+10;
+      yy+=text('C&A',M+14,yy,CW,400,12,'#6e6e73',18);chips(cea.length?cea:TB,M+12,yy,CW-24);y+=ch+14;
+      [['casa',v.casa],['loja',v.loja]].forEach(([tipo,s],k)=>{
+        const casa=tipo==='casa',X=M+58,CWc=W-M-X,pad=16,iw=CWc-2*pad;
+        const meet=casa?('Encontro às '+minus10(s.hora)+' em frente à casa'):(s.formato==='rua'?'Reencontro da equipe na loja':'Reencontro da equipe no shopping');
+        const measure=()=>{let h=pad;h+=18+4;h+=text(s.nome,0,0,iw,600,18,'#111',24)+6;if(casa&&(s.idade||s.classe))h+=26;
+          h+=text(s.endereco,0,0,iw,400,14,'#6e6e73',20);if(s.obs)h+=8+text(s.obs,0,0,iw-20,400,13,'#111',18)+16;h+=10+text(meet,0,0,iw,400,13,'#111',18)+pad;return h};
+        const h=measure();
+        font(casa?600:500,casa?15:11);if(draw){ctx.fillStyle=casa?'#111':'#6e6e73';ctx.textBaseline='top';const lab=casa?s.hora:'depois';ctx.fillText(lab,M+(44-ctx.measureText(lab).width)/2,y+18)}
+        if(k===0&&draw){ctx.fillStyle=acc;ctx.globalAlpha=.55;ctx.fillRect(M+21,y+44,2,h-44+14);ctx.globalAlpha=1}
+        rr(X,y,CWc,h,18,casa?'#fff':'#f5f3ef',casa?'#e8e6e1':null);let cy=y+pad;
+        cy+=text(casa?'Etnografia em casa':'Visita à loja',X+pad,cy,iw,400,12,'#6e6e73',18)+4;
+        cy+=text(s.nome,X+pad,cy,iw,600,18,'#111',24)+6;
+        if(casa&&(s.idade||s.classe)){let tx=X+pad;[s.idade?s.idade+' anos':'',s.classe?'Classe '+s.classe:''].filter(Boolean).forEach(t=>{font(600,12);const w=ctx.measureText(t).width+16;rr(tx,cy,w,20,8,tint);if(draw){ctx.fillStyle='#111';ctx.textBaseline='middle';ctx.fillText(t,tx+8,cy+10.5)}tx+=w+6});cy+=26}
+        cy+=text(s.endereco,X+pad,cy,iw,400,14,'#6e6e73',20);
+        if(s.obs){cy+=8;const oh=text(s.obs,0,0,iw-20,400,13,'#111',18)+16;rr(X+pad,cy,iw,oh,10,casa?'#f5f3ef':'#fff');text(s.obs,X+pad+10,cy+8,iw-20,400,13,'#111',18);cy+=oh}
+        cy+=10;text(meet,X+pad,cy,iw,400,13,'#111',18);
+        y+=h+12});
+      y+=18});
+    y+=14});
+  // manual
+  y+=10;hline(y);y+=30;
+  font(300,40);if(draw){ctx.fillStyle='#111';ctx.textBaseline='top';ctx.fillText('manual de',M,y)}y+=42;font(700,40);if(draw)ctx.fillText('campo.',M,y);y+=58;
+  D.manual.forEach(m=>{y+=text(m.titulo,M,y,CW,600,17,'#111',24)+8;
+    m.texto.forEach(x=>{const t=typeof x==='string'?x:x.t;dot(M+5,y+10,'#b89b6e',3);y+=text(t,M+18,y,CW-18,400,14,'#3a3a3c',20)+8});y+=14});
+  y+=6;y+=section('Pode e não pode',y)+14;
+  [['Pode',D.dos,'#f5f3ef',null,'#111'],['Evite',D.donts,'#fff','#e8e6e1','#9c7e52']].forEach(([tt,list,bg,bd,dc])=>{
+    let h=18+22+6;list.forEach(x=>{h+=text(typeof x==='string'?x:x.t,0,0,CW-54,400,14,'#111',20)+10});h+=8;
+    rr(M,y,CW,h,18,bg,bd);let yy=y+18;yy+=text(tt,M+18,yy,CW,700,15,'#111',22)+6;
+    list.forEach(x=>{const t=typeof x==='string'?x:x.t;dot(M+24,yy+10,dc,5);yy+=text(t,M+38,yy,CW-54,400,14,'#111',20)+10});y+=h+10});
+  // equipe
+  y+=20;hline(y);y+=30;
+  font(300,40);if(draw){ctx.fillStyle='#111';ctx.textBaseline='top';ctx.fillText('quem está',M,y)}y+=42;font(700,40);if(draw)ctx.fillText('em campo.',M,y);y+=60;
+  const all=[...(D.contatos||[]),...(p.contatos||[])],isC=c=>c.empresa==='C&A'||/@cea\./i.test(c.email||'');
+  const card=c=>{const lines=[c.telFmt,c.email].filter(Boolean);let h=16+24+text(c.papel||'',0,0,CW-90,400,13,'#6e6e73',18)+6+lines.length*20+16;h=Math.max(h,80);
+    rr(M,y,CW,h,18,null,'#e8e6e1');const cor=c.pessoa?P(c.pessoa).cor:'#111';dot(M+16+23,y+16+23,cor,23);
+    const ini=c.nome.split(' ').length>1?c.nome.split(' ').map(x=>x[0]).slice(0,2).join(''):c.nome.slice(0,2);
+    font(600,16);if(draw){ctx.fillStyle='#fff';ctx.textBaseline='middle';ctx.fillText(ini,M+16+23-ctx.measureText(ini).width/2,y+16+23.5)}
+    let yy=y+16;yy+=text(c.nome,M+78,yy,CW-90,600,17,'#111',24);yy+=text(c.papel||'',M+78,yy,CW-90,400,13,'#6e6e73',18)+6;
+    lines.forEach((l,i)=>{text(l,M+78,yy,CW-90,400,14,i?'#6e6e73':'#111',20);yy+=20});y+=h+10};
+  y+=section('Equipe C&A',y)+14;all.filter(isC).forEach(card);
+  p.dias.forEach((d,di)=>{const acc=TINTS[di%3][0];let h=14+24;const rows=d.visitas.map(v=>{const it=(v.cea||[]).map(n=>({n,r:'C&A',c:'#111'}));return it.length?it:[{n:'A confirmar',r:'',tbd:true}]});
+    rows.forEach(r=>{h+=Math.max(chips(r,0,0,CW-32-80),34)+8});h+=8;
+    rr(M,y,CW,h,18,null,acc,1.5);let yy=y+14;font(600,16);if(draw){ctx.fillStyle='#111';ctx.textBaseline='top';ctx.fillText(d.titulo,M+16,yy)}
+    font(400,12);const ds=fmtDay(d.data);if(draw){ctx.fillStyle='#6e6e73';ctx.fillText(ds,W-M-16-ctx.measureText(ds).width,yy+3)}yy+=28;
+    d.visitas.forEach((v,k)=>{text(v.bloco,M+16,yy+2,80,400,12,'#6e6e73',16);text(v.janela,M+16,yy+18,80,400,12,'#6e6e73',16);
+      yy+=Math.max(chips(rows[k],M+96,yy,CW-32-80),34)+8});y+=h+10});
+  y+=16;y+=section('Contatos Provokers',y)+14;all.filter(c=>!isC(c)).forEach(card);
+  // rodapé
+  y+=20;hline(y);y+=18;
+  font(400,12);if(draw){ctx.fillStyle='#a1a1a6';ctx.textBaseline='top';ctx.fillText(st.main+' · gerado em '+st.gen,M,y)}
+  if(imgs.pv){const h=13,w=imgs.pv.width*h/imgs.pv.height;if(draw){ctx.globalAlpha=.8;ctx.drawImage(imgs.pv,W-M-w,y,w,h);ctx.globalAlpha=1}}
+  return y+40;
+}
+async function renderStrip(){
+  const p=CUR(),st=stampInfo();
+  const [cea,pv]=await Promise.all([loadImg('cea.png'),loadImg('provokers.png')]);const imgs={cea,pv};
+  const m=document.createElement('canvas').getContext('2d');const H=Math.ceil(layoutDoc(m,false,p,imgs,st));
+  const W=430;let s=Math.min(2,Math.sqrt(15.5e6/(W*H)),16000/H);s=Math.max(s,.6);
+  const c=document.createElement('canvas');c.width=Math.round(W*s);c.height=Math.round(H*s);
+  const ctx=c.getContext('2d');ctx.scale(s,s);layoutDoc(ctx,true,p,imgs,st);
+  return{canvas:c,W,H,p,st};
+}
+const toBlob=(c,type,q)=>new Promise(r=>c.toBlob(r,type,q));
+async function jpegToPdf(jpgBlob,pxW,pxH,W,H){
+  const jpg=new Uint8Array(await jpgBlob.arrayBuffer());
+  const k=Math.min(1,14000/H),pw=(W*k).toFixed(2),ph=(H*k).toFixed(2);
+  const enc=new TextEncoder(),parts=[],offs=[];let len=0;
+  const add=x=>{const b=typeof x==='string'?enc.encode(x):x;parts.push(b);len+=b.length};
+  add('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n'.replace(/[\xE2\xE3\xCF\xD3]/g,'A'));
+  const content=`q ${pw} 0 0 ${ph} 0 0 cm /Im0 Do Q`;
+  const obj=(n,body)=>{offs[n]=len;add(`${n} 0 obj\n`);body();add('\nendobj\n')};
+  obj(1,()=>add('<< /Type /Catalog /Pages 2 0 R >>'));
+  obj(2,()=>add('<< /Type /Pages /Kids [3 0 R] /Count 1 >>'));
+  obj(3,()=>add(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw} ${ph}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>`));
+  obj(4,()=>{add(`<< /Type /XObject /Subtype /Image /Width ${pxW} /Height ${pxH} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpg.length} >>\nstream\n`);add(jpg);add('\nendstream')});
+  obj(5,()=>add(`<< /Length ${content.length} >>\nstream\n${content}\nendstream`));
+  const xref=len;let x=`xref\n0 6\n0000000000 65535 f \n`;for(let i=1;i<=5;i++)x+=String(offs[i]).padStart(10,'0')+' 00000 n \n';
+  add(x+`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);
+  return new Blob(parts,{type:'application/pdf'});
+}
+async function deliver(blob,name){
+  const file=new File([blob],name,{type:blob.type});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:name});return}catch(e){if(e&&e.name==='AbortError')return}}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000);
+}
+let EXBUSY=false;
+async function doExport(kind){
+  if(EXBUSY)return;EXBUSY=true;hideEx();toast('Preparando o arquivo…');
+  try{
+    if(navigator.onLine){FRESH=0;await Promise.race([load(),new Promise(r=>setTimeout(r,6000))])}
+    const {canvas,W,H,p,st}=await renderStrip();
+    const jpg=await toBlob(canvas,'image/jpeg',.9);if(!jpg)throw 0;
+    const now=new Date(),tag=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'_'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0');
+    const base=`CeA_Campo_${p.uf}_${tag}`;
+    if(kind==='pdf')await deliver(await jpegToPdf(jpg,canvas.width,canvas.height,W,H),base+'.pdf');
+    else await deliver(jpg,base+'.jpg');
+    if(!st.ok)toast(st.main+'. Confira se há atualização.');
+  }catch(e){console.error(e);toast('Não deu para gerar o arquivo. Tente de novo.')}
+  EXBUSY=false;
+}
+function showEx(){const st=stampInfo();$('#exStamp').innerHTML=`<span class="pdot" style="background:${st.ok?'#34c759':'#b3261e'}"></span>${nb(navigator.onLine?'A planilha será sincronizada antes de exportar.':st.main+'. Sem conexão agora.')}`;
+  const s=$('#exSheet');s.classList.add('show');s.setAttribute('aria-hidden','false')}
+function hideEx(){const s=$('#exSheet');s.classList.remove('show');s.setAttribute('aria-hidden','true')}
+$('#exBtn').addEventListener('click',showEx);
+$('#exX').addEventListener('click',hideEx);
+$('#exSheet').addEventListener('click',e=>{if(e.target.id==='exSheet')hideEx()});
+$('#exPdf').addEventListener('click',()=>doExport('pdf'));
+$('#exJpg').addEventListener('click',()=>doExport('jpg'));
+
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));
